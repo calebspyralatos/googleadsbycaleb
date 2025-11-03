@@ -546,44 +546,51 @@ const Index = () => {
             </p>
           </div>
 
-          <Card className="p-8 bg-card/80 backdrop-blur-sm border-border/50">
-            <form className="space-y-6">
+          <Card className="p-8 md:p-12 bg-card/80 backdrop-blur-sm border-border/50">
+            <div className="space-y-8">
               <div>
-                <label className="block text-sm font-medium mb-2">
-                  When can you squeeze time to give me a call?
+                <label className="block text-xl font-semibold mb-6 text-center">
+                  How much did you spend on Meta ads last month? (roughly) *
                 </label>
-                <Input 
-                  type="text" 
-                  placeholder="e.g., Tomorrow at 3 PM" 
-                  className="bg-background/50"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Your Email
-                </label>
-                <Input 
-                  type="email" 
-                  placeholder="your.email@example.com" 
-                  className="bg-background/50"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  Tell me about your business
-                </label>
-                <Textarea 
-                  placeholder="What are you selling? What are your goals?" 
-                  className="bg-background/50 min-h-32"
-                />
-              </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log('Selected: 0-20k$');
+                      // Handle navigation or form submission
+                    }}
+                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-center">
+                      <div className="text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                        0-20k$
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Getting started
+                      </div>
+                    </div>
+                  </button>
 
-              <Button variant="hero" size="lg" className="w-full text-lg">
-                Let's Talk
-              </Button>
-            </form>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      console.log('Selected: 20k$+');
+                      // Handle navigation or form submission
+                    }}
+                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-accent hover:bg-accent/5 transition-all duration-300 cursor-pointer"
+                  >
+                    <div className="text-center">
+                      <div className="text-3xl font-bold mb-2 group-hover:text-accent transition-colors">
+                        20k$+
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Scaling phase
+                      </div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
           </Card>
         </div>
       </section>
