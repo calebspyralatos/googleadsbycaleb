@@ -147,7 +147,7 @@ const Index = () => {
           <div className="space-y-6 animate-fade-in">
             <div className="inline-block">
               <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Jonathan
+                Caleb
               </span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
@@ -167,7 +167,7 @@ const Index = () => {
               <div className="flex items-center gap-4">
                 <img 
                   src={heroProfile} 
-                  alt="Jonathan Profile" 
+                  alt="Caleb Profile" 
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div className="flex-1">
@@ -176,7 +176,7 @@ const Index = () => {
                       <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground">Jonathan R.</p>
+                  <p className="text-sm text-muted-foreground">Caleb R.</p>
                   <p className="text-xs text-muted-foreground">Google Partner</p>
                 </div>
                 <div className="text-right">
@@ -195,7 +195,7 @@ const Index = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
             <img 
               src={heroProfile} 
-              alt="Jonathan Profile" 
+              alt="Caleb Profile" 
               className="relative rounded-3xl shadow-2xl w-full object-cover aspect-square"
             />
           </div>
@@ -424,37 +424,37 @@ const Index = () => {
               {
                 name: "Sarah Johnson",
                 role: "E-commerce Owner",
-                content: "Working with Jonathan was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
+                content: "Working with Caleb was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
                 avatar: "SJ"
               },
               {
                 name: "Michael Chen",
                 role: "Marketing Director",
-                content: "Finally, a Google Ads expert who actually understands our business goals. Jonathan's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
+                content: "Finally, a Google Ads expert who actually understands our business goals. Caleb's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
                 avatar: "MC"
               },
               {
                 name: "Emma Rodriguez",
                 role: "Founder & CEO",
-                content: "Jonathan doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
+                content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
                 avatar: "ER"
               },
               {
                 name: "Sarah Johnson",
                 role: "E-commerce Owner",
-                content: "Working with Jonathan was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
+                content: "Working with Caleb was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
                 avatar: "SJ"
               },
               {
                 name: "Michael Chen",
                 role: "Marketing Director",
-                content: "Finally, a Google Ads expert who actually understands our business goals. Jonathan's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
+                content: "Finally, a Google Ads expert who actually understands our business goals. Caleb's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
                 avatar: "MC"
               },
               {
                 name: "Emma Rodriguez",
                 role: "Founder & CEO",
-                content: "Jonathan doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
+                content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
                 avatar: "ER"
               }
             ].map((testimonial, index) => (
@@ -501,7 +501,7 @@ const Index = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
               <img 
                 src={promiseProfile} 
-                alt="Jonathan Promise" 
+                alt="Caleb Promise" 
                 className="relative rounded-3xl shadow-2xl w-full object-cover"
               />
             </div>
@@ -599,7 +599,7 @@ const Index = () => {
       <footer className="container mx-auto px-4 py-12 border-t border-border/50">
         <div className="text-center">
           <h3 className="text-2xl font-bold mb-2">
-            Jonathan <span className="text-accent">👋</span>
+            Caleb <span className="text-accent">👋</span>
           </h3>
           <p className="text-muted-foreground">
             Google Ads Freelancer | Partner
