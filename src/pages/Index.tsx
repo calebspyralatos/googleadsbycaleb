@@ -408,15 +408,37 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="container mx-auto px-4 py-20 bg-card/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            People Who Trusted Me
-          </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
-          
-          <div className="grid md:grid-cols-3 gap-6">
+      <section className="py-20 bg-card/30 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+              People Who Trusted Me
+            </h2>
+            <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
+          </div>
+        </div>
+        
+        <div className="relative">
+          <div className="flex animate-scroll-right gap-8 w-max">
             {[
+              {
+                name: "Sarah Johnson",
+                role: "E-commerce Owner",
+                content: "Working with Jonathan was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
+                avatar: "SJ"
+              },
+              {
+                name: "Michael Chen",
+                role: "Marketing Director",
+                content: "Finally, a Google Ads expert who actually understands our business goals. Jonathan's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
+                avatar: "MC"
+              },
+              {
+                name: "Emma Rodriguez",
+                role: "Founder & CEO",
+                content: "Jonathan doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
+                avatar: "ER"
+              },
               {
                 name: "Sarah Johnson",
                 role: "E-commerce Owner",
@@ -438,30 +460,31 @@ const Index = () => {
             ].map((testimonial, index) => (
               <Card 
                 key={index} 
-                className="p-6 bg-card/80 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="p-8 bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/50 transition-all w-[400px] flex-shrink-0 shadow-xl"
               >
-                <div className="flex items-center gap-1 mb-4">
+                <div className="flex items-center gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                    <Star key={i} className="w-6 h-6 fill-primary text-primary" />
                   ))}
                 </div>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-lg text-foreground mb-8 leading-relaxed font-medium">
                   "{testimonial.content}"
                 </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-white">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-white text-xl">
                     {testimonial.avatar}
                   </div>
                   <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                    <div className="font-bold text-lg">{testimonial.name}</div>
+                    <div className="text-muted-foreground">{testimonial.role}</div>
                   </div>
                 </div>
               </Card>
             ))}
           </div>
+        </div>
 
+        <div className="container mx-auto px-4">
           <div className="text-center mt-12">
             <Button variant="hero" size="lg">
               Join Them Today
