@@ -566,17 +566,97 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-12 border-t border-border/50">
-        <div className="text-center">
-          <h3 className="text-2xl font-bold mb-2">
-            Jonathan <span className="text-accent">👋</span>
-          </h3>
-          <p className="text-muted-foreground">
-            Google Ads Freelancer | Partner
-          </p>
-          <p className="text-sm text-muted-foreground mt-4">
-            © 2025 All rights reserved
-          </p>
+      <footer className="container mx-auto px-4 py-20 border-t border-border/50 bg-card/20">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-3xl font-bold mb-2">
+                  Jonathan <span className="text-accent">👋</span>
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Google Ads Freelancer | Partner
+                </p>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                Ready to transform your Google Ads performance? Let's discuss how strategic, data-driven campaigns can help you achieve exceptional ROI.
+              </p>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <h4 className="text-xl font-semibold mb-6">Get In Touch</h4>
+              <form className="space-y-4" onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = (formData.get('name') as string)?.trim();
+                const email = (formData.get('email') as string)?.trim();
+                const message = (formData.get('message') as string)?.trim();
+                
+                if (!name || name.length > 100) {
+                  alert('Please enter a valid name (max 100 characters)');
+                  return;
+                }
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) {
+                  alert('Please enter a valid email address');
+                  return;
+                }
+                if (!message || message.length > 1000) {
+                  alert('Please enter a message (max 1000 characters)');
+                  return;
+                }
+                
+                // Encode data for WhatsApp or other services
+                const encodedMessage = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+                console.log('Form submitted:', { name, email, message: message.substring(0, 50) });
+                alert('Thank you for your message! I will get back to you soon.');
+                e.currentTarget.reset();
+              }}>
+                <div>
+                  <Input 
+                    type="text"
+                    name="name"
+                    placeholder="Your Name" 
+                    required
+                    maxLength={100}
+                    className="bg-background/50"
+                  />
+                </div>
+                
+                <div>
+                  <Input 
+                    type="email"
+                    name="email"
+                    placeholder="Your Email" 
+                    required
+                    maxLength={255}
+                    className="bg-background/50"
+                  />
+                </div>
+                
+                <div>
+                  <Textarea 
+                    name="message"
+                    placeholder="Your Message" 
+                    required
+                    maxLength={1000}
+                    className="bg-background/50 min-h-32"
+                  />
+                </div>
+
+                <Button type="submit" variant="hero" size="lg" className="w-full">
+                  Send Message
+                </Button>
+              </form>
+            </div>
+          </div>
+
+          <div className="text-center mt-12 pt-8 border-t border-border/50">
+            <p className="text-sm text-muted-foreground">
+              © 2025 Jonathan. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
