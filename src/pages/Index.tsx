@@ -80,7 +80,7 @@ const TestimonialCarousel = () => {
             <div
               key={index}
               className={cn(
-                'absolute w-48 h-80 md:w-64 md:h-[450px] transition-all duration-500 ease-in-out',
+                'absolute w-72 h-[500px] md:w-96 md:h-[600px] transition-all duration-500 ease-in-out',
                 'flex items-center justify-center'
               )}
               style={{
@@ -103,13 +103,13 @@ const TestimonialCarousel = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center">
-                    <Play className="w-8 h-8 text-primary-foreground ml-1" fill="currentColor" />
+                  <div className="w-24 h-24 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
+                    <Play className="w-12 h-12 text-primary-foreground ml-1" fill="currentColor" />
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
-                  <h3 className="font-bold text-lg mb-1">{video.name}</h3>
-                  <p className="text-sm text-muted-foreground">{video.role}</p>
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
+                  <h3 className="font-bold text-xl md:text-2xl mb-2">{video.name}</h3>
+                  <p className="text-base md:text-lg text-muted-foreground">{video.role}</p>
                 </div>
               </div>
             </div>
@@ -296,7 +296,7 @@ const Index = () => {
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
           
-          <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center [perspective:1000px]">
+          <div className="relative w-full h-[550px] md:h-[650px] flex items-center justify-center [perspective:1000px]">
             <TestimonialCarousel />
           </div>
         </div>
