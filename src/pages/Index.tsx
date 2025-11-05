@@ -208,73 +208,76 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="container mx-auto px-4 py-20 bg-card/30">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                Hi, I'm Caleb.
-              </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-                I've been freelancing on Upwork for the past 9 years, managing Meta ads.
-              </p>
-            </div>
-            
-            <div className="animate-fade-in-up">
-              <Card className="p-8 bg-white text-black shadow-2xl">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center gap-4">
-                    <img 
-                      src={heroProfile} 
-                      alt="Caleb Profile" 
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-2xl font-bold">Caleb R.</h3>
-                        <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
-                          <CheckCircle className="w-4 h-4 text-white" fill="currentColor" />
+      {/* Intro Section - Overlapping */}
+      <div className="container mx-auto px-4 relative -mt-16 mb-16 z-10">
+        <div className="max-w-5xl mx-auto relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-secondary/30 to-accent/40 rounded-3xl blur-3xl" />
+          <div className="relative bg-card/80 backdrop-blur-sm border-2 border-secondary/30 rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6 animate-fade-in">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                  Hi, I'm Caleb.
+                </h2>
+                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                  I've been freelancing on Upwork for the past 9 years, managing Meta ads.
+                </p>
+              </div>
+              
+              <div className="animate-fade-in-up">
+                <Card className="p-8 bg-white text-black shadow-2xl">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                      <img 
+                        src={heroProfile} 
+                        alt="Caleb Profile" 
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h3 className="text-2xl font-bold">Caleb R.</h3>
+                          <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                            <CheckCircle className="w-4 h-4 text-white" fill="currentColor" />
+                          </div>
                         </div>
+                        <p className="text-sm text-gray-600 flex items-center gap-1">
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          North Myrtle Beach, United States
+                        </p>
                       </div>
-                      <p className="text-sm text-gray-600 flex items-center gap-1">
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        North Myrtle Beach, United States
-                      </p>
+                    </div>
+                    <div className="text-right">
+                      <div className="flex items-center gap-1 text-green-500 font-bold text-sm mb-1">
+                        <Star className="w-4 h-4 fill-green-500" />
+                        Top Rated
+                      </div>
+                      <div className="text-green-600 font-bold text-lg">Upwork</div>
+                      <p className="text-xs text-gray-600">5-Star Rating</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="flex items-center gap-1 text-green-500 font-bold text-sm mb-1">
-                      <Star className="w-4 h-4 fill-green-500" />
-                      Top Rated
+                  
+                  <div className="flex items-center gap-6 pt-4 border-t border-gray-200">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
+                        <CheckCircle className="w-5 h-5 text-white" />
+                      </div>
+                      <span className="font-semibold text-sm">100% Job Success</span>
                     </div>
-                    <div className="text-green-600 font-bold text-lg">Upwork</div>
-                    <p className="text-xs text-gray-600">5-Star Rating</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-6 pt-4 border-t border-gray-200">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                      <CheckCircle className="w-5 h-5 text-white" />
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center">
+                        <Star className="w-5 h-5 text-white fill-white" />
+                      </div>
+                      <span className="font-semibold text-sm">Top Rated Plus</span>
                     </div>
-                    <span className="font-semibold text-sm">100% Job Success</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-pink-500 flex items-center justify-center">
-                      <Star className="w-5 h-5 text-white fill-white" />
-                    </div>
-                    <span className="font-semibold text-sm">Top Rated Plus</span>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* What Makes Me Different */}
       <section className="container mx-auto px-4 py-20">
