@@ -187,7 +187,7 @@ const Index = () => {
             </Card>
 
             <Button variant="hero" size="lg" className="text-base">
-              Schedule a Call Now
+              Book a Call
             </Button>
           </div>
           
@@ -282,7 +282,7 @@ const Index = () => {
 
           <div className="text-center mt-12">
             <Button variant="hero" size="lg">
-              Let's Work Together
+              Book a Call
             </Button>
           </div>
         </div>
