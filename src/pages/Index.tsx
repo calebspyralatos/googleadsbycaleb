@@ -144,7 +144,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32 relative">
         <div className="absolute top-8 right-4 md:right-8 z-10">
-          <Button variant="hero" size="lg">
+          <Button variant="cta" size="lg">
             Book a Call
           </Button>
         </div>
@@ -178,7 +178,7 @@ const Index = () => {
                 <div className="flex-1">
                   <div className="flex items-center gap-1 mb-1">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                      <Star key={i} className="w-4 h-4 fill-cta text-cta" />
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground">Caleb R.</p>
@@ -191,7 +191,7 @@ const Index = () => {
               </div>
             </Card>
 
-            <Button variant="hero" size="lg" className="text-base">
+            <Button variant="cta" size="lg" className="text-base">
               Book a Call
             </Button>
           </div>
@@ -286,7 +286,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="hero" size="lg">
+            <Button variant="cta" size="lg">
               Book a Call
             </Button>
           </div>
@@ -472,14 +472,14 @@ const Index = () => {
               >
                 <div className="flex items-center gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 fill-primary text-primary" />
+                    <Star key={i} className="w-6 h-6 fill-cta text-cta" />
                   ))}
                 </div>
                 <p className="text-lg text-foreground mb-8 leading-relaxed font-medium">
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center font-bold text-white text-xl">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cta to-accent flex items-center justify-center font-bold text-background text-xl">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -494,7 +494,7 @@ const Index = () => {
 
         <div className="container mx-auto px-4">
           <div className="text-center mt-12">
-            <Button variant="hero" size="lg">
+            <Button variant="cta" size="lg">
               Join Them Today
             </Button>
           </div>
