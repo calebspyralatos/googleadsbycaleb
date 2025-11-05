@@ -145,7 +145,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32 relative">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-secondary/30 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-8 right-4 md:right-8 z-10">
           <Button variant="cta" size="lg">
             Book a Call
