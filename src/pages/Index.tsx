@@ -279,8 +279,11 @@ const Index = () => {
         </div>
       </div>
 
+      {/* Gradient Divider */}
+      <div className="w-full h-32 bg-gradient-to-b from-background via-secondary/10 to-background" />
+
       {/* What Makes Me Different */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-background to-card/20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What Makes Me <span className="inline-block px-4 py-1 bg-secondary text-white rounded-full">Different</span>
@@ -365,6 +368,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gradient Divider */}
+      <div className="w-full h-32 bg-gradient-to-b from-card/20 via-accent/10 to-card/30" />
+
       {/* What It's Like Working With Me */}
       <section className="container mx-auto px-4 py-20 bg-card/30 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5 pointer-events-none" />
@@ -380,8 +386,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gradient Divider */}
+      <div className="w-full h-32 bg-gradient-to-b from-card/30 via-background to-background" />
+
       {/* Recent Projects */}
-      <section className="container mx-auto px-4 py-20 relative">
+      <section className="container mx-auto px-4 py-20 relative bg-gradient-to-b from-background to-card/10">
         <div className="absolute top-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-6xl mx-auto relative">
@@ -487,6 +496,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gradient Divider */}
+      <div className="w-full h-32 bg-gradient-to-b from-card/10 via-secondary/10 to-card/30" />
+
       {/* Testimonials */}
       <section className="py-20 bg-card/30 overflow-hidden">
         <div className="container mx-auto px-4">
@@ -573,8 +585,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gradient Divider */}
+      <div className="w-full h-32 bg-gradient-to-b from-card/30 via-background to-card/20" />
+
       {/* What I Can Promise */}
-      <section className="container mx-auto px-4 py-20">
+      <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-card/20 to-background">
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
@@ -612,6 +627,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Gradient Divider */}
+      <div className="w-full h-32 bg-gradient-to-b from-background via-accent/10 to-card/30" />
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20 bg-card/30 relative overflow-hidden">
