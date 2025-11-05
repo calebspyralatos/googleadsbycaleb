@@ -142,7 +142,12 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 md:py-32">
+      <section className="container mx-auto px-4 py-20 md:py-32 relative">
+        <div className="absolute top-8 right-4 md:right-8 z-10">
+          <Button variant="hero" size="lg">
+            Book a Call
+          </Button>
+        </div>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
             <div className="inline-block">
