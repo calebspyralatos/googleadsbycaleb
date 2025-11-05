@@ -44,7 +44,7 @@ export const ProjectImage = ({ src, alt, className = "" }: ProjectImageProps) =>
         className="w-full transition-transform duration-300 ease-out"
         style={{
           transform: isHovering
-            ? `scale(1.3) translate(${(50 - mousePosition.x) * 0.3}%, ${(50 - mousePosition.y) * 0.3}%)`
+            ? `scale(1.6) translate(${(50 - mousePosition.x) * 0.5}%, ${(50 - mousePosition.y) * 0.5}%)`
             : "scale(1) translate(0, 0)",
           transformOrigin: `${mousePosition.x}% ${mousePosition.y}%`,
         }}
