@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { ProjectImage } from "@/components/ui/project-image";
 import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -342,10 +343,10 @@ const Index = () => {
               </div>
               <div className="relative group animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-tr from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                <img 
+                <ProjectImage 
                   src={project1} 
                   alt="Project 1" 
-                  className="relative rounded-2xl shadow-2xl w-full border border-accent/20"
+                  className="relative shadow-2xl border border-accent/20"
                 />
               </div>
             </div>
@@ -354,10 +355,10 @@ const Index = () => {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative group order-2 md:order-1 animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-tl from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                <img 
+                <ProjectImage 
                   src={project2} 
                   alt="Project 2" 
-                  className="relative rounded-2xl shadow-2xl w-full border border-accent/20"
+                  className="relative shadow-2xl border border-accent/20"
                 />
               </div>
               <div className="space-y-4 order-1 md:order-2 animate-fade-in">
@@ -404,10 +405,10 @@ const Index = () => {
               </div>
               <div className="relative group animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
-                <img 
+                <ProjectImage 
                   src={project3} 
                   alt="Project 3" 
-                  className="relative rounded-2xl shadow-2xl w-full border border-accent/20"
+                  className="relative shadow-2xl border border-accent/20"
                 />
               </div>
             </div>
