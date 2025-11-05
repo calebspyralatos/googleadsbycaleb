@@ -103,8 +103,8 @@ const TestimonialCarousel = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-primary/90 backdrop-blur-sm flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-                    <Play className="w-12 h-12 text-primary-foreground ml-1" fill="currentColor" />
+                  <div className="w-24 h-24 rounded-full bg-foreground/90 backdrop-blur-sm flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
+                    <Play className="w-12 h-12 text-background ml-1" fill="currentColor" />
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
@@ -570,10 +570,10 @@ const Index = () => {
                       console.log('Selected: 0-20k$');
                       // Handle navigation or form submission
                     }}
-                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer"
+                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-muted-foreground hover:bg-muted/10 transition-all duration-300 cursor-pointer"
                   >
                     <div className="text-center">
-                      <div className="text-3xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      <div className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors">
                         0-20k$
                       </div>
                       <div className="text-sm text-muted-foreground">
@@ -588,10 +588,10 @@ const Index = () => {
                       console.log('Selected: 20k$+');
                       // Handle navigation or form submission
                     }}
-                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-accent hover:bg-accent/5 transition-all duration-300 cursor-pointer"
+                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-muted-foreground hover:bg-muted/10 transition-all duration-300 cursor-pointer"
                   >
                     <div className="text-center">
-                      <div className="text-3xl font-bold mb-2 group-hover:text-accent transition-colors">
+                      <div className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors">
                         20k$+
                       </div>
                       <div className="text-sm text-muted-foreground">
