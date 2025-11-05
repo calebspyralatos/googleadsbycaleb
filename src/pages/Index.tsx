@@ -289,8 +289,9 @@ const Index = () => {
       </section>
 
       {/* What It's Like Working With Me */}
-      <section className="container mx-auto px-4 py-20 bg-card/30">
-        <div className="max-w-6xl mx-auto">
+      <section className="container mx-auto px-4 py-20 bg-card/30 relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5 pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What It's Like Working With Me
           </h2>
@@ -303,8 +304,10 @@ const Index = () => {
       </section>
 
       {/* Recent Projects */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="max-w-6xl mx-auto">
+      <section className="container mx-auto px-4 py-20 relative">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Recent Projects
           </h2>
@@ -333,11 +336,11 @@ const Index = () => {
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                 <img 
                   src={project1} 
                   alt="Project 1" 
-                  className="relative rounded-2xl shadow-2xl w-full border border-border/50"
+                  className="relative rounded-2xl shadow-2xl w-full border border-accent/20"
                 />
               </div>
             </div>
@@ -345,11 +348,11 @@ const Index = () => {
             {/* Project 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative group order-2 md:order-1 animate-fade-in-up">
-                <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                <div className="absolute inset-0 bg-gradient-to-tl from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                 <img 
                   src={project2} 
                   alt="Project 2" 
-                  className="relative rounded-2xl shadow-2xl w-full border border-border/50"
+                  className="relative rounded-2xl shadow-2xl w-full border border-accent/20"
                 />
               </div>
               <div className="space-y-4 order-1 md:order-2 animate-fade-in">
@@ -395,11 +398,11 @@ const Index = () => {
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
                 <img 
                   src={project3} 
                   alt="Project 3" 
-                  className="relative rounded-2xl shadow-2xl w-full border border-border/50"
+                  className="relative rounded-2xl shadow-2xl w-full border border-accent/20"
                 />
               </div>
             </div>
@@ -534,8 +537,11 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20 bg-card/30">
-        <div className="max-w-3xl mx-auto">
+      <section className="container mx-auto px-4 py-20 bg-card/30 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-transparent pointer-events-none" />
+        <div className="max-w-3xl mx-auto relative">
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Are Your Meta Ads In The Wrong Hands?
