@@ -211,7 +211,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            What Makes Me <span className="text-accent">Different</span>
+            What Makes Me <span className="inline-block px-4 py-1 bg-secondary text-white rounded-full">Different</span>
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-12 rounded-full" />
           
