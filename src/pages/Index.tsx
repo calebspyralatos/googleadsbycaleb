@@ -356,6 +356,7 @@ const Index = () => {
                   src={project1} 
                   alt="Project 1" 
                   className="relative shadow-2xl border border-accent/20"
+                  interactive
                 />
               </div>
             </div>
@@ -368,6 +369,7 @@ const Index = () => {
                   src={project2} 
                   alt="Project 2" 
                   className="relative shadow-2xl border border-accent/20"
+                  interactive
                 />
               </div>
               <div className="space-y-4 order-1 md:order-2 animate-fade-in">
@@ -418,6 +420,7 @@ const Index = () => {
                   src={project3} 
                   alt="Project 3" 
                   className="relative shadow-2xl border border-accent/20"
+                  interactive
                 />
               </div>
             </div>
