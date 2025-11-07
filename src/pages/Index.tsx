@@ -194,8 +194,8 @@ const Index = () => {
       </section>
 
       {/* Intro Section - Overlapping */}
-      <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-16 z-10 overflow-visible">
-        <div className="max-w-[1400px] mx-auto relative overflow-visible">
+      <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-16 z-10">
+        <div className="max-w-[1400px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -217,17 +217,17 @@ const Index = () => {
               </div>
             </div>
           </div>
-          {/* Cut-off spotlight at bottom of badge illuminating next section */}
-          <div 
-            className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30"
-            style={{
-              background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
-              filter: 'blur(80px)',
-              mixBlendMode: 'screen',
-              clipPath: 'polygon(0 50%, 100% 50%, 100% 100%, 0 100%)'
-            }}
-          />
         </div>
+        {/* Cut-off spotlight at bottom of badge illuminating next section - moved outside constrained container */}
+        <div 
+          className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30"
+          style={{
+            background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
+            filter: 'blur(80px)',
+            mixBlendMode: 'screen',
+            clipPath: 'polygon(0 50%, 100% 50%, 100% 100%, 0 100%)'
+          }}
+        />
       </div>
 
       {/* What Makes Me Different */}
