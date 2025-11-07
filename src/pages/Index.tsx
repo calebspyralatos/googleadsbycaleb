@@ -236,7 +236,7 @@ const Index = () => {
       <section className="px-4 md:px-8 lg:px-16 pt-32 pb-20 bg-gradient-to-b from-background to-card/20 relative">
         <div className="max-w-[1200px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            What Makes Me <span className="inline-block px-4 py-2 bg-secondary text-white rounded-full align-middle">Different</span>
+            What Makes Me <span className="inline-block px-4 py-3 bg-secondary text-white rounded-full align-middle">Different</span>
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-12 rounded-full" />
           
