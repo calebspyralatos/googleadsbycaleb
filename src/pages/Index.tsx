@@ -169,30 +169,6 @@ const Index = () => {
                 And maybe you will get exactly what you need.
               </p>
             </div>
-            
-            {/* Stats Card */}
-            <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50">
-              <div className="flex items-center gap-4">
-                <img 
-                  src={heroProfile} 
-                  alt="Caleb Profile" 
-                  className="w-16 h-16 rounded-full object-cover"
-                />
-                <div className="flex-1">
-                  <div className="flex items-center gap-1 mb-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-cta text-cta" />
-                    ))}
-                  </div>
-                  <p className="text-sm text-muted-foreground">Caleb R.</p>
-                  <p className="text-xs text-muted-foreground">Google Partner</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-2xl font-bold text-accent">$27k</div>
-                  <p className="text-xs text-muted-foreground">Avg. Client ROI</p>
-                </div>
-              </div>
-            </Card>
 
             <Button variant="cta" size="lg" className="text-base">
               Book a Call
