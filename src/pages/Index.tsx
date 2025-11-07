@@ -148,7 +148,7 @@ const Index = () => {
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/30 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute top-20 left-0 w-[400px] h-[400px] bg-accent/25 rounded-full blur-[80px] pointer-events-none" />
         <div className="absolute top-8 right-4 md:right-8 z-10">
-          <Button variant="cta" size="lg">
+          <Button variant="cta" size="xl">
             Book a Call
           </Button>
         </div>
@@ -171,7 +171,7 @@ const Index = () => {
               </p>
             </div>
 
-            <Button variant="cta" size="lg" className="text-base">
+            <Button variant="cta" size="xl" className="text-base">
               Book a Call
             </Button>
           </div>
@@ -294,7 +294,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="cta" size="lg">
+            <Button variant="cta" size="xl">
               Book a Call
             </Button>
           </div>
@@ -505,7 +505,7 @@ const Index = () => {
 
         <div className="container mx-auto px-4">
           <div className="text-center mt-12">
-            <Button variant="cta" size="lg">
+            <Button variant="cta" size="xl">
               Book a Call
             </Button>
           </div>
