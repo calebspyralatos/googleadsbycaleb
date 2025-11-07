@@ -233,7 +233,7 @@ const Index = () => {
       </div>
 
       {/* What Makes Me Different */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 bg-gradient-to-b from-background to-card/20 relative">
+      <section className="px-4 md:px-8 lg:px-16 pt-32 pb-20 bg-gradient-to-b from-background to-card/20 relative">
         <div className="max-w-[1200px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What Makes Me <span className="inline-block px-4 py-1 bg-secondary text-white rounded-full">Different</span>
