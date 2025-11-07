@@ -195,11 +195,11 @@ const Index = () => {
 
       {/* Intro Section - Overlapping */}
       <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-48 z-10">
-        <div className="max-w-[900px] mx-auto relative">
+        <div className="max-w-[1000px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
-          <div className="relative backdrop-blur-sm rounded-2xl p-4 md:p-6 shadow-lg" style={{ backgroundColor: '#131316' }}>
-            <div className="grid md:grid-cols-2 gap-6 items-center">
-              <div className="space-y-3 animate-fade-in">
+          <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-4 animate-fade-in">
                 <h2 className="text-2xl md:text-3xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
