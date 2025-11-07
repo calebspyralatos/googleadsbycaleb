@@ -144,24 +144,15 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 md:py-32 relative">
-        {/* SVG Spotlight - Ultra smooth */}
-        <svg className="absolute -top-40 -left-40 w-[800px] h-[800px] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="smooth-spotlight" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="hsl(145, 51%, 16%)" stopOpacity="0.5" />
-              <stop offset="25%" stopColor="hsl(145, 51%, 16%)" stopOpacity="0.35" />
-              <stop offset="50%" stopColor="hsl(145, 51%, 16%)" stopOpacity="0.2" />
-              <stop offset="75%" stopColor="hsl(145, 51%, 16%)" stopOpacity="0.08" />
-              <stop offset="90%" stopColor="hsl(145, 51%, 16%)" stopOpacity="0.02" />
-              <stop offset="100%" stopColor="hsl(145, 51%, 16%)" stopOpacity="0" />
-            </radialGradient>
-            <filter id="ultra-blur" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="80" />
-            </filter>
-          </defs>
-          <circle cx="400" cy="400" r="400" fill="url(#smooth-spotlight)" filter="url(#ultra-blur)" />
-        </svg>
+      <section className="container mx-auto px-4 py-20 md:py-32 relative overflow-hidden">
+        <div 
+          className="absolute -top-60 -left-60 w-[900px] h-[900px] rounded-full pointer-events-none opacity-30"
+          style={{
+            background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
+            filter: 'blur(80px)',
+            mixBlendMode: 'screen'
+          }}
+        />
         <div className="absolute top-8 right-4 md:right-8 z-10">
           <Button variant="cta" size="xl">
             Book a Call
