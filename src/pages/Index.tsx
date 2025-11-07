@@ -456,6 +456,17 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
               People Who Trusted Me
             </h2>
+            <p className="text-center text-muted-foreground mb-6">
+              The reviews below are real and can be verified on my{" "}
+              <a 
+                href="https://www.upwork.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-accent hover:underline font-semibold"
+              >
+                Upwork Profile
+              </a>
+            </p>
             <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
           </div>
         </div>
