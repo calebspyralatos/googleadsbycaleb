@@ -322,7 +322,7 @@ const Index = () => {
       <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
         {/* Smooth spotlight on the left */}
         <div 
-          className="absolute top-1/2 -left-40 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
+          className="absolute top-1/2 -left-64 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
             background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
             filter: 'blur(80px)',
