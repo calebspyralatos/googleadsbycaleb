@@ -144,7 +144,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 md:py-32 relative overflow-hidden">
+      <section className="px-4 md:px-8 lg:px-16 py-20 md:py-32 relative overflow-hidden">
         <div 
           className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
@@ -158,7 +158,7 @@ const Index = () => {
             Book a Call
           </Button>
         </div>
-        <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
             <div className="inline-block">
               <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
@@ -194,8 +194,8 @@ const Index = () => {
       </section>
 
       {/* Intro Section - Overlapping */}
-      <div className="container mx-auto px-4 relative -mt-16 mb-16 z-10">
-        <div className="max-w-5xl mx-auto relative">
+      <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-16 z-10">
+        <div className="max-w-[1400px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -231,8 +231,8 @@ const Index = () => {
       </div>
 
       {/* What Makes Me Different */}
-      <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-background to-card/20 relative">
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="px-4 md:px-8 lg:px-16 py-20 bg-gradient-to-b from-background to-card/20 relative">
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What Makes Me <span className="inline-block px-4 py-1 bg-secondary text-white rounded-full">Different</span>
           </h2>
@@ -317,8 +317,8 @@ const Index = () => {
       </section>
 
       {/* What It's Like Working With Me */}
-      <section className="container mx-auto px-4 py-20 bg-card/30 relative">
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative">
+        <div className="max-w-[1400px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What It's Like Working With Me
           </h2>
@@ -331,8 +331,8 @@ const Index = () => {
       </section>
 
       {/* Recent Projects */}
-      <section className="container mx-auto px-4 py-20 relative bg-gradient-to-b from-background to-card/10">
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="px-4 md:px-8 lg:px-16 py-20 relative bg-gradient-to-b from-background to-card/10">
+        <div className="max-w-[1400px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Recent Projects
           </h2>
@@ -440,8 +440,8 @@ const Index = () => {
 
       {/* Testimonials */}
       <section className="py-20 bg-card/30 overflow-hidden relative">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto">
+        <div className="px-4 md:px-8 lg:px-16 relative z-10">
+          <div className="max-w-[1400px] mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
               People Who Trusted Me
             </h2>
@@ -525,8 +525,8 @@ const Index = () => {
       </section>
 
       {/* What I Can Promise */}
-      <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-card/20 to-background relative">
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="px-4 md:px-8 lg:px-16 py-20 bg-gradient-to-b from-card/20 to-background relative">
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-60" />
@@ -565,8 +565,8 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-20 bg-card/30 relative overflow-hidden">
-        <div className="max-w-3xl mx-auto relative z-10">
+      <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
+        <div className="max-w-[1000px] mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Are Your Meta Ads In The Wrong Hands?
