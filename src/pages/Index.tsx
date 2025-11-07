@@ -103,7 +103,7 @@ const TestimonialCarousel = () => {
                   alt={video.alt}
                   className="object-cover w-full h-full"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 via-background/20 to-transparent" />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-24 h-24 rounded-full bg-foreground/90 backdrop-blur-sm flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
                     <Play className="w-12 h-12 text-background ml-1" fill="currentColor" />
@@ -175,8 +175,8 @@ const Index = () => {
           </div>
           
           <div className="relative animate-fade-in-up">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
-            <img 
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-70" />
+            <img
               src={heroProfile} 
               alt="Caleb Profile" 
               className="relative rounded-3xl shadow-2xl w-full object-cover aspect-square"
@@ -188,7 +188,7 @@ const Index = () => {
       {/* Intro Section - Overlapping */}
       <div className="container mx-auto px-4 relative -mt-16 mb-16 z-10">
         <div className="max-w-5xl mx-auto relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-secondary/15 to-accent/20 rounded-3xl blur-2xl" />
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 animate-fade-in">
@@ -343,7 +343,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
-                <div className="absolute inset-0 bg-gradient-to-tr from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
                 <ProjectImage 
                   src={project1} 
                   alt="Project 1" 
@@ -356,7 +356,7 @@ const Index = () => {
             {/* Project 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="relative group order-2 md:order-1 animate-fade-in-up">
-                <div className="absolute inset-0 bg-gradient-to-tl from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
                 <ProjectImage 
                   src={project2} 
                   alt="Project 2" 
@@ -407,7 +407,7 @@ const Index = () => {
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/20 rounded-2xl blur-2xl group-hover:blur-3xl transition-all" />
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
                 <ProjectImage 
                   src={project3} 
                   alt="Project 3" 
@@ -484,7 +484,7 @@ const Index = () => {
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cta to-accent flex items-center justify-center font-bold text-background text-xl">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-xl">
                     {testimonial.avatar}
                   </div>
                   <div>
@@ -511,7 +511,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-60" />
               <img 
                 src={promiseProfile} 
                 alt="Caleb Promise" 
