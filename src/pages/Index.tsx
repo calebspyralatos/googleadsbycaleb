@@ -194,16 +194,16 @@ const Index = () => {
       </section>
 
       {/* Intro Section - Overlapping */}
-      <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-16 z-10">
-        <div className="max-w-[1400px] mx-auto relative">
+      <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-32 z-10">
+        <div className="max-w-[1200px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
-          <div className="relative backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg" style={{ backgroundColor: '#131316' }}>
+          <div className="relative backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-lg" style={{ backgroundColor: '#131316' }}>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 animate-fade-in">
-                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                <h2 className="text-3xl md:text-4xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
-                <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
                   I've been freelancing on Upwork for the past 9 years, managing Meta ads.
                 </p>
               </div>
