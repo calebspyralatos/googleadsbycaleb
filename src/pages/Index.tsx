@@ -222,9 +222,9 @@ const Index = () => {
       {/* Cut-off spotlight at bottom of badge - full width */}
       <div className="relative w-full -mt-96 mb-80 h-0 pointer-events-none z-0">
         <div 
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-30"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-40"
           style={{
-            background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
+            background: 'radial-gradient(circle at center, hsl(145, 51%, 35%) 0%, hsl(145, 51%, 30%) 15%, hsl(145, 51%, 25%) 30%, hsl(145, 51%, 18%) 45%, transparent 70%)',
             filter: 'blur(80px)',
             mixBlendMode: 'screen',
             clipPath: 'polygon(0 50%, 100% 50%, 100% 100%, 0 100%)'
