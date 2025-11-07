@@ -82,7 +82,7 @@ const TestimonialCarousel = () => {
             <div
               key={index}
               className={cn(
-                'absolute w-72 h-[500px] md:w-96 md:h-[600px] transition-all duration-500 ease-in-out',
+                'absolute w-60 h-[420px] md:w-80 md:h-[500px] transition-all duration-500 ease-in-out',
                 'flex items-center justify-center'
               )}
               style={{
@@ -311,7 +311,7 @@ const Index = () => {
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
           
-          <div className="relative w-full h-[550px] md:h-[650px] flex items-center justify-center [perspective:1000px]">
+          <div className="relative w-full h-[470px] md:h-[550px] flex items-center justify-center [perspective:1000px]">
             <TestimonialCarousel />
           </div>
         </div>
