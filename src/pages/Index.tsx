@@ -219,7 +219,7 @@ const Index = () => {
           </div>
           {/* Cut-off spotlight at bottom of badge illuminating next section */}
           <div 
-            className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30"
+            className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30"
             style={{
               background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
               filter: 'blur(80px)',
