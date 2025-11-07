@@ -506,7 +506,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mt-12">
             <Button variant="cta" size="lg">
-              Join Them Today
+              Book a Call
             </Button>
           </div>
         </div>
