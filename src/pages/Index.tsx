@@ -498,6 +498,24 @@ const Index = () => {
                 role: "Founder & CEO",
                 content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
                 avatar: "ER"
+              },
+              {
+                name: "Sarah Johnson",
+                role: "E-commerce Owner",
+                content: "Working with Caleb was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
+                avatar: "SJ"
+              },
+              {
+                name: "Michael Chen",
+                role: "Marketing Director",
+                content: "Finally, a Google Ads expert who actually understands our business goals. Caleb's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
+                avatar: "MC"
+              },
+              {
+                name: "Emma Rodriguez",
+                role: "Founder & CEO",
+                content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
+                avatar: "ER"
               }
             ].map((testimonial, index) => (
               <Card 
