@@ -147,7 +147,7 @@ const Index = () => {
       <section className="container mx-auto px-4 py-20 md:py-32 relative">
         <div className="absolute -top-20 -left-20 w-[600px] h-[600px] rounded-full pointer-events-none" 
              style={{
-               background: 'radial-gradient(circle, hsl(145 51% 16% / 0.4) 0%, hsl(145 51% 16% / 0.3) 20%, hsl(145 51% 16% / 0.2) 40%, hsl(145 51% 16% / 0.1) 60%, hsl(145 51% 16% / 0.05) 80%, transparent 100%)',
+               background: 'radial-gradient(circle, hsl(145 51% 16% / 0.4) 0%, hsl(145 51% 16% / 0.38) 10%, hsl(145 51% 16% / 0.35) 15%, hsl(145 51% 16% / 0.32) 20%, hsl(145 51% 16% / 0.28) 25%, hsl(145 51% 16% / 0.24) 30%, hsl(145 51% 16% / 0.20) 35%, hsl(145 51% 16% / 0.16) 40%, hsl(145 51% 16% / 0.13) 45%, hsl(145 51% 16% / 0.10) 50%, hsl(145 51% 16% / 0.08) 55%, hsl(145 51% 16% / 0.06) 60%, hsl(145 51% 16% / 0.04) 65%, hsl(145 51% 16% / 0.03) 70%, hsl(145 51% 16% / 0.02) 75%, hsl(145 51% 16% / 0.01) 80%, hsl(145 51% 16% / 0.005) 85%, hsl(145 51% 16% / 0.002) 90%, transparent 95%, transparent 100%)',
                filter: 'blur(60px)'
              }} 
         />
