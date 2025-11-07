@@ -145,7 +145,12 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32 relative">
-        <div className="absolute -top-20 -left-20 w-[600px] h-[600px] bg-gradient-to-br from-accent/40 via-accent/20 via-accent/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -top-20 -left-20 w-[600px] h-[600px] rounded-full pointer-events-none" 
+             style={{
+               background: 'radial-gradient(circle, hsl(145 51% 16% / 0.4) 0%, hsl(145 51% 16% / 0.3) 20%, hsl(145 51% 16% / 0.2) 40%, hsl(145 51% 16% / 0.1) 60%, hsl(145 51% 16% / 0.05) 80%, transparent 100%)',
+               filter: 'blur(60px)'
+             }} 
+        />
         <div className="absolute top-8 right-4 md:right-8 z-10">
           <Button variant="cta" size="xl">
             Book a Call
