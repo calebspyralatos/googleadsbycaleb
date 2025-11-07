@@ -188,8 +188,8 @@ const Index = () => {
       {/* Intro Section - Overlapping */}
       <div className="container mx-auto px-4 relative -mt-16 mb-16 z-10">
         <div className="max-w-5xl mx-auto relative">
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary/40 via-secondary/30 to-accent/40 rounded-3xl blur-3xl" />
-          <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 via-secondary/15 to-accent/20 rounded-3xl blur-2xl" />
+          <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="space-y-6 animate-fade-in">
                 <h2 className="text-4xl md:text-5xl font-bold leading-tight">
