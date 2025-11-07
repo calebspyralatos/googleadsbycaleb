@@ -146,7 +146,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32 relative overflow-hidden">
         <div 
-          className="absolute -top-60 -left-60 w-[900px] h-[900px] rounded-full pointer-events-none opacity-30"
+          className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
             background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
             filter: 'blur(80px)',
