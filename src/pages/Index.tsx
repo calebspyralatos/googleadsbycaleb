@@ -145,8 +145,6 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32 relative">
-        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/30 rounded-full blur-[120px] pointer-events-none z-0" />
-        <div className="absolute top-20 left-0 w-[400px] h-[400px] bg-accent/25 rounded-full blur-[80px] pointer-events-none z-0" />
         <div className="absolute top-8 right-4 md:right-8 z-10">
           <Button variant="cta" size="xl">
             Book a Call
@@ -216,7 +214,6 @@ const Index = () => {
 
       {/* What Makes Me Different */}
       <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-background to-card/20 relative">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[100px] pointer-events-none z-0" />
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What Makes Me <span className="inline-block px-4 py-1 bg-secondary text-white rounded-full">Different</span>
@@ -303,8 +300,6 @@ const Index = () => {
 
       {/* What It's Like Working With Me */}
       <section className="container mx-auto px-4 py-20 bg-card/30 relative">
-        <div className="absolute top-1/4 right-10 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[100px] pointer-events-none z-0" />
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent/5 pointer-events-none z-0" />
         <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             What It's Like Working With Me
@@ -319,9 +314,6 @@ const Index = () => {
 
       {/* Recent Projects */}
       <section className="container mx-auto px-4 py-20 relative bg-gradient-to-b from-background to-card/10">
-        <div className="absolute top-20 left-10 w-[600px] h-[600px] bg-secondary/15 rounded-full blur-[100px] pointer-events-none z-0" />
-        <div className="absolute top-20 right-10 w-[600px] h-[600px] bg-accent/15 rounded-full blur-[100px] pointer-events-none z-0" />
-        <div className="absolute bottom-20 left-10 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[100px] pointer-events-none z-0" />
         <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Recent Projects
@@ -430,7 +422,6 @@ const Index = () => {
 
       {/* Testimonials */}
       <section className="py-20 bg-card/30 overflow-hidden relative">
-        <div className="absolute bottom-1/4 left-10 w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[100px] pointer-events-none z-0" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
@@ -517,7 +508,6 @@ const Index = () => {
 
       {/* What I Can Promise */}
       <section className="container mx-auto px-4 py-20 bg-gradient-to-b from-card/20 to-background relative">
-        <div className="absolute top-1/3 right-20 w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] pointer-events-none z-0" />
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
@@ -558,11 +548,7 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-20 bg-card/30 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-secondary/20 rounded-full blur-[100px] pointer-events-none z-0" />
-        <div className="absolute inset-0 bg-gradient-to-t from-accent/5 via-transparent to-transparent pointer-events-none z-0" />
         <div className="max-w-3xl mx-auto relative z-10">
-          <div className="absolute -top-20 -right-20 w-[400px] h-[400px] bg-accent/15 rounded-full blur-[100px] pointer-events-none z-0" />
-          <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-primary/15 rounded-full blur-[100px] pointer-events-none z-0" />
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Are Your Meta Ads In The Wrong Hands?
