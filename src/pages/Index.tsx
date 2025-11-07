@@ -196,6 +196,15 @@ const Index = () => {
       {/* Intro Section - Overlapping */}
       <div className="container mx-auto px-4 relative -mt-16 mb-16 z-10">
         <div className="max-w-5xl mx-auto relative">
+          {/* Smooth spotlight underneath */}
+          <div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/4 w-[700px] h-[700px] rounded-full pointer-events-none opacity-25 -z-10"
+            style={{
+              background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
+              filter: 'blur(80px)',
+              mixBlendMode: 'screen'
+            }}
+          />
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative bg-card/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-lg">
             <div className="grid md:grid-cols-2 gap-12 items-center">
