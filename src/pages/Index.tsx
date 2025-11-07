@@ -220,7 +220,7 @@ const Index = () => {
         </div>
       </div>
       {/* Cut-off spotlight at bottom of badge - full width */}
-      <div className="relative w-full -mt-64 mb-48 h-0 pointer-events-none z-0">
+      <div className="relative w-full -mt-80 mb-64 h-0 pointer-events-none z-0">
         <div 
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-30"
           style={{
