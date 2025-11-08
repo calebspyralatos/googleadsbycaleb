@@ -540,7 +540,7 @@ const Index = () => {
                     <Star key={i} className="w-6 h-6" fill="#DF7606" color="#DF7606" />
                   ))}
                 </div>
-                <p className="text-lg text-foreground mb-8 leading-relaxed font-medium">
+                <p className="text-lg text-foreground mb-8 leading-relaxed">
                   "{testimonial.content}"
                 </p>
                 <div className="flex items-center gap-4">
