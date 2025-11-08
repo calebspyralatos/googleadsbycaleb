@@ -111,7 +111,7 @@ const TestimonialCarousel = () => {
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
                   <h3 className="font-bold text-xl md:text-2xl mb-2">{video.name}</h3>
-                  <p className="text-base md:text-lg text-muted-foreground">{video.role}</p>
+                  <p className="text-base md:text-lg text-white">{video.role}</p>
                 </div>
               </div>
             </div>
@@ -161,7 +161,7 @@ const Index = () => {
         <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
             <div className="inline-block">
-              <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              <span className="text-sm font-semibold uppercase tracking-wider text-white">
                 Caleb
               </span>
             </div>
@@ -172,7 +172,7 @@ const Index = () => {
               <h2 className="text-4xl md:text-6xl font-bold">
                 I'm just <span className="text-accent">different.</span>
               </h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-white">
                 And maybe you will get exactly what you need.
               </p>
             </div>
@@ -203,7 +203,7 @@ const Index = () => {
                 <h2 className="text-2xl md:text-3xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base md:text-lg text-white leading-relaxed">
                   I've been freelancing on Upwork for the past 9 years, managing Meta ads.
                 </p>
               </div>
@@ -247,7 +247,7 @@ const Index = () => {
               </div>
               <div>
                 <h3 className="text-xl font-semibold mb-2">+12% TOF not just with 'crazy' ads</h3>
-                <p className="text-muted-foreground">
+                <p className="text-white">
                   Anyway – you can find on Upwork? a fancy or 'funny' or even 'stupid' ad, but I use my years of experience and data-driven insights to consistently improve your campaign performance with strategic, proven methods.
                 </p>
               </div>
@@ -261,7 +261,7 @@ const Index = () => {
                 <h3 className="text-xl font-semibold mb-2">
                   No A/B test. No CRO. No "magic" headlines. No black & white Ads.
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-white">
                   I've learned so many times that what works, just works, because we did our tasks carefully in the beginning. Solid strategy beats flashy tactics every time.
                 </p>
               </div>
@@ -275,7 +275,7 @@ const Index = () => {
                 <h3 className="text-xl font-semibold mb-2">
                   If few carousel images will fit, I will do a few carousel images. Not 50.
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-white">
                   I hate this kind of work. This is an editor's job, or a PM's. This isn't a job for someone trying to 3x your business.
                 </p>
               </div>
@@ -289,7 +289,7 @@ const Index = () => {
                 <h3 className="text-xl font-semibold mb-2">
                   I do transparently managing your given budget.
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-white">
                   You know exactly where every dollar goes. No hidden fees, no surprise charges, just clear communication and honest reporting.
                 </p>
               </div>
@@ -303,7 +303,7 @@ const Index = () => {
                 <h3 className="text-xl font-semibold mb-2">
                   I do not fall back on lazy black & white ads with just words in.
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-white">
                   This isn't different. This is an archive of 8 out of every 10 ads I see.
                 </p>
               </div>
@@ -358,16 +358,16 @@ const Index = () => {
                   <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-semibold">
                     GOOGLE
                   </span>
-                  <span className="text-muted-foreground">January - April 2025</span>
+                  <span className="text-white">January - April 2025</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
                     <div className="text-2xl font-bold text-primary">+487%</div>
-                    <div className="text-sm text-muted-foreground">ROAS Increase</div>
+                    <div className="text-sm text-white">ROAS Increase</div>
                   </Card>
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
                     <div className="text-2xl font-bold text-accent">$142k</div>
-                    <div className="text-sm text-muted-foreground">Revenue Generated</div>
+                    <div className="text-sm text-white">Revenue Generated</div>
                   </Card>
                 </div>
               </div>
@@ -399,16 +399,16 @@ const Index = () => {
                   <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-semibold">
                     GOOGLE
                   </span>
-                  <span className="text-muted-foreground">August 2023</span>
+                  <span className="text-white">August 2023</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
                     <div className="text-2xl font-bold text-primary">+312%</div>
-                    <div className="text-sm text-muted-foreground">Conversion Rate</div>
+                    <div className="text-sm text-white">Conversion Rate</div>
                   </Card>
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
                     <div className="text-2xl font-bold text-accent">$89k</div>
-                    <div className="text-sm text-muted-foreground">Revenue Generated</div>
+                    <div className="text-sm text-white">Revenue Generated</div>
                   </Card>
                 </div>
               </div>
@@ -422,16 +422,16 @@ const Index = () => {
                   <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-semibold">
                     GOOGLE
                   </span>
-                  <span className="text-muted-foreground">January - August 2023</span>
+                  <span className="text-white">January - August 2023</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
                     <div className="text-2xl font-bold text-primary">+271%</div>
-                    <div className="text-sm text-muted-foreground">Revenue Growth</div>
+                    <div className="text-sm text-white">Revenue Growth</div>
                   </Card>
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
                     <div className="text-2xl font-bold text-accent">$274k</div>
-                    <div className="text-sm text-muted-foreground">Total Revenue</div>
+                    <div className="text-sm text-white">Total Revenue</div>
                   </Card>
                 </div>
               </div>
@@ -456,7 +456,7 @@ const Index = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
               People Who Trusted Me
             </h2>
-            <p className="text-center text-muted-foreground mb-6 text-lg md:text-xl">
+            <p className="text-center text-white mb-6 text-lg md:text-xl">
               The reviews below are real and can be verified on my{" "}
               <a 
                 href="https://www.upwork.com" 
@@ -549,7 +549,7 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="font-bold text-lg">{testimonial.name}</div>
-                    <div className="text-muted-foreground">{testimonial.role}</div>
+                    <div className="text-white">{testimonial.role}</div>
                   </div>
                 </div>
               </Card>
@@ -581,14 +581,14 @@ const Index = () => {
             
             <div className="space-y-6 animate-fade-in-up">
               <div className="inline-block mb-4">
-                <span className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                <span className="text-sm font-semibold uppercase tracking-wider text-white">
                   I won't sell you the moon and the stars.
                 </span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold">
                 What I <span className="text-accent">Can Promise</span>
               </h2>
-              <div className="space-y-4 text-lg text-muted-foreground">
+              <div className="space-y-4 text-lg text-white">
                 <p>
                   Even if I'm <span className="text-foreground font-semibold">
                     the fanciest of every ads</span>, I can{" "}
@@ -614,7 +614,7 @@ const Index = () => {
               Are Your Meta Ads In The Wrong Hands?
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-white">
               Schedule a call with me
             </p>
           </div>
@@ -632,13 +632,13 @@ const Index = () => {
                       console.log('Selected: 0-20k$');
                       // Handle navigation or form submission
                     }}
-                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-muted-foreground hover:bg-muted/10 transition-all duration-300 cursor-pointer"
+                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-white hover:bg-muted/10 transition-all duration-300 cursor-pointer"
                   >
                     <div className="text-center">
                       <div className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors">
                         0-20k$
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-sm text-white">
                         Getting started
                       </div>
                     </div>
@@ -650,13 +650,13 @@ const Index = () => {
                       console.log('Selected: 20k$+');
                       // Handle navigation or form submission
                     }}
-                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-muted-foreground hover:bg-muted/10 transition-all duration-300 cursor-pointer"
+                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-white hover:bg-muted/10 transition-all duration-300 cursor-pointer"
                   >
                     <div className="text-center">
                       <div className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors">
                         20k$+
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-sm text-white">
                         Scaling phase
                       </div>
                     </div>
@@ -674,10 +674,10 @@ const Index = () => {
           <h3 className="text-2xl font-bold mb-2">
             Caleb <span className="text-accent">👋</span>
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-white">
             Google Ads Freelancer | Partner
           </p>
-          <p className="text-sm text-muted-foreground mt-4">
+          <p className="text-sm text-white mt-4">
             © 2025 All rights reserved
           </p>
         </div>
