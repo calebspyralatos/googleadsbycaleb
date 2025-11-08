@@ -462,11 +462,12 @@ const Index = () => {
                 href="https://www.upwork.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:underline font-semibold"
+                className="underline hover:opacity-80 font-semibold"
                 style={{ color: '#63c341' }}
               >
-                UpWork profile.
+                UpWork profile
               </a>
+              <span className="text-white">.</span>
             </p>
             <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
           </div>
