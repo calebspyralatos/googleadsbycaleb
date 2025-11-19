@@ -160,11 +160,6 @@ const Index = () => {
         </div>
         <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
-            <div className="inline-block">
-              <span className="text-sm font-semibold uppercase tracking-wider text-white">
-                Caleb
-              </span>
-            </div>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               I'm not saying that I'm better than all other Meta ads.
             </h1>
