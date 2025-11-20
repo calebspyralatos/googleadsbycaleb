@@ -6,12 +6,66 @@ import { ProjectImage } from "@/components/ui/project-image";
 import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React from "react";
+
+const CountUpNumber = ({ value, duration = 2000 }: { value: string; duration?: number }) => {
+  const [displayValue, setDisplayValue] = React.useState("0");
+  const elementRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Extract numeric value
+          const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
+          const isPercentage = value.includes("%");
+          const isCurrency = value.includes("$");
+
+          const startTime = Date.now();
+
+          const animate = () => {
+            const now = Date.now();
+            const progress = Math.min((now - startTime) / duration, 1);
+            const currentValue = Math.floor(progress * numericValue);
+
+            let display = currentValue.toString();
+            if (isCurrency) display = `$${display}k`;
+            if (isPercentage) display = `+${display}%`;
+
+            setDisplayValue(display);
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            }
+          };
+
+          animate();
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [value, duration]);
+
+  return <div ref={elementRef}>{displayValue}</div>;
+};
 import heroProfile from "@/assets/hero-profile.jpg";
 import promiseProfile from "@/assets/promise-profile.jpg";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import upworkProof from "@/assets/upwork-proof.jpg";
+import adamK from "@/assets/Adam K.jpeg";
+import davidG from "@/assets/David G.webp";
+import jankaM from "@/assets/Janka-Mifsud.png";
+import brandonR from "@/assets/Brandon Rall.jpeg";
+import alexC from "@/assets/Alex Chen.png";
+import andyG from "@/assets/Andy G.jpeg";
 
 const testimonialVideos = [
   {
@@ -161,14 +215,11 @@ const Index = () => {
         <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              I'm not saying that I'm better than all other Meta ads.
+              I specialize in Google Ads for local businesses. <span className="inline-block px-3 py-2 bg-secondary text-white rounded-full" style={{ verticalAlign: 'text-bottom' }}>Only.</span>
             </h1>
             <div className="space-y-4">
-              <h2 className="text-4xl md:text-6xl font-bold">
-                I'm just <span className="text-accent">different.</span>
-              </h2>
               <p className="text-xl text-white">
-                And maybe you will get exactly what you need.
+                If you run a local business, I will help you get more leads, calls and store visits.
               </p>
             </div>
 
@@ -194,12 +245,12 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4 animate-fade-in">
+              <div className="space-y-4 animate-fade-in max-w-2xl">
                 <h2 className="text-2xl md:text-3xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
                 <p className="text-base md:text-lg text-white leading-relaxed">
-                  I've been freelancing on Upwork for the past 9 years, managing Meta ads.
+                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads <span className="text-secondary">primarily for local businesses.</span>
                 </p>
               </div>
               
@@ -228,84 +279,62 @@ const Index = () => {
       </div>
 
       {/* What Makes Me Different */}
-      <section className="px-4 md:px-8 lg:px-16 pt-32 pb-20 bg-gradient-to-b from-background to-card/20 relative">
-        <div className="max-w-[1200px] mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+      <section className="px-4 md:px-8 lg:px-16 py-32 bg-gradient-to-b from-background to-card/20 relative min-h-screen flex items-center">
+        <div className="max-w-[900px] mx-auto relative z-10 w-full">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-2">
             What Makes Me <span className="inline-block px-4 py-3 bg-secondary text-white rounded-full" style={{ verticalAlign: 'text-bottom' }}>Different</span>
           </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-12 rounded-full" />
-          
-          <div className="space-y-8">
-            <div className="flex gap-4 items-start animate-fade-in">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <TrendingUp className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">+12% TOF not just with 'crazy' ads</h3>
-                <p className="text-white">
-                  Anyway – you can find on Upwork? a fancy or 'funny' or even 'stupid' ad, but I use my years of experience and data-driven insights to consistently improve your campaign performance with strategic, proven methods.
-                </p>
-              </div>
-            </div>
+          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
 
-            <div className="flex gap-4 items-start animate-fade-in">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                <Target className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  No A/B test. No CRO. No "magic" headlines. No black & white Ads.
-                </h3>
-                <p className="text-white">
-                  I've learned so many times that what works, just works, because we did our tasks carefully in the beginning. Solid strategy beats flashy tactics every time.
-                </p>
-              </div>
-            </div>
+          <div className="space-y-5 text-center">
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              I am a freelancer, and will always be.
+            </p>
 
-            <div className="flex gap-4 items-start animate-fade-in">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  If few carousel images will fit, I will do a few carousel images. Not 50.
-                </h3>
-                <p className="text-white">
-                  I hate this kind of work. This is an editor's job, or a PM's. This isn't a job for someone trying to 3x your business.
-                </p>
-              </div>
-            </div>
+            <div className="border-b border-white/20 w-64 mx-auto" />
 
-            <div className="flex gap-4 items-start animate-fade-in">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  I do transparently managing your given budget.
-                </h3>
-                <p className="text-white">
-                  You know exactly where every dollar goes. No hidden fees, no surprise charges, just clear communication and honest reporting.
-                </p>
-              </div>
-            </div>
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              Therefore, I am 100% the person running your ads.
+            </p>
 
-            <div className="flex gap-4 items-start animate-fade-in">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <CheckCircle className="w-6 h-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  I do not fall back on lazy black & white ads with just words in.
-                </h3>
-                <p className="text-white">
-                  This isn't different. This is an archive of 8 out of every 10 ads I see.
-                </p>
-              </div>
-            </div>
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              So, no agencies or outsourcing the work to someone else.
+            </p>
+
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              Also, 99% of media buyers have never risked their own money on ads.
+            </p>
+
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              I have. Running ads for my own page and Google Reviews course.
+            </p>
+
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              So, I know the frustration of spending hard-earned money without seeing results.
+            </p>
+
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              That's why I handle your ad spend with the same care I give my own.
+            </p>
+
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              When it comes to helping out local business owners, like you, on anything related to Google, I've seen it all.
+            </p>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8">
             <Button variant="cta" size="xl">
               Book a Call
             </Button>
@@ -357,11 +386,15 @@ const Index = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-primary">+487%</div>
+                    <div className="text-2xl font-bold text-primary">
+                      <CountUpNumber value="+487%" />
+                    </div>
                     <div className="text-sm text-white">ROAS Increase</div>
                   </Card>
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-accent">$142k</div>
+                    <div className="text-2xl font-bold text-accent">
+                      <CountUpNumber value="$142k" />
+                    </div>
                     <div className="text-sm text-white">Revenue Generated</div>
                   </Card>
                 </div>
@@ -398,11 +431,15 @@ const Index = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-primary">+312%</div>
+                    <div className="text-2xl font-bold text-primary">
+                      <CountUpNumber value="+312%" />
+                    </div>
                     <div className="text-sm text-white">Conversion Rate</div>
                   </Card>
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-accent">$89k</div>
+                    <div className="text-2xl font-bold text-accent">
+                      <CountUpNumber value="$89k" />
+                    </div>
                     <div className="text-sm text-white">Revenue Generated</div>
                   </Card>
                 </div>
@@ -421,11 +458,15 @@ const Index = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-primary">+271%</div>
+                    <div className="text-2xl font-bold text-primary">
+                      <CountUpNumber value="+271%" />
+                    </div>
                     <div className="text-sm text-white">Revenue Growth</div>
                   </Card>
                   <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-accent">$274k</div>
+                    <div className="text-2xl font-bold text-accent">
+                      <CountUpNumber value="$274k" />
+                    </div>
                     <div className="text-sm text-white">Total Revenue</div>
                   </Card>
                 </div>
@@ -472,79 +513,80 @@ const Index = () => {
           <div className="flex animate-scroll-right gap-8 w-max">
             {[
               {
-                name: "Sarah Johnson",
-                role: "E-commerce Owner",
-                content: "Working with Caleb was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
-                avatar: "SJ"
+                name: "Adam K.",
+                role: "",
+                content: "Caleb is one of the best contractors I've ever worked with. Incredible at Google Ads.",
+                image: adamK
               },
               {
-                name: "Michael Chen",
-                role: "Marketing Director",
-                content: "Finally, a Google Ads expert who actually understands our business goals. Caleb's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
-                avatar: "MC"
+                name: "David G.",
+                role: "",
+                content: "Caleb was excellent to work with. I vetted a handful of freelancers, but ended up working with Caleb due to a mix of his obvious expertise and his shared passion for the work I do for my specific clients. I plan to continue using Caleb going forward as I've already seen great results from his help with my Google ads just a month into the campaign. You will be in good hands if you decide to work with Caleb.",
+                image: davidG
               },
               {
-                name: "Emma Rodriguez",
-                role: "Founder & CEO",
-                content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
-                avatar: "ER"
+                name: "Janka M.",
+                role: "",
+                content: "Caleb was great to work with, very honest and available. He set up campaigns and took the time to explain how things work. I will work with him again.",
+                image: jankaM
               },
               {
-                name: "Sarah Johnson",
-                role: "E-commerce Owner",
-                content: "Working with Caleb was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
-                avatar: "SJ"
+                name: "Brandon R.",
+                role: "",
+                content: "Caleb was great! Not only does he have an incredible amount of knowledge about Google Ads, but actively makes recommendations and suggestions to keep improving the account. He was very prompt in all communication and had incredible dedication to make the project a success!",
+                image: brandonR
               },
               {
-                name: "Michael Chen",
-                role: "Marketing Director",
-                content: "Finally, a Google Ads expert who actually understands our business goals. Caleb's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
-                avatar: "MC"
+                name: "Alex C.",
+                role: "",
+                content: "I highly recommend Caleb for his outstanding work as our Google Media Buyer. His expertise significantly improved our online presence, optimizing campaigns for impressive results. Caleb is not only highly skilled but also a pleasure to work with, ensuring clear communication and a positive collaboration experience. We look forward to future projects together.",
+                image: alexC
               },
               {
-                name: "Emma Rodriguez",
-                role: "Founder & CEO",
-                content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
-                avatar: "ER"
+                name: "Daniel B.",
+                role: "",
+                content: "Working with Caleb was a great experience. He's a genuinely nice guy and has the skill we need to get the job done efficiently and at a high-quality level. He's a great communicator.",
+                image: null
               },
               {
-                name: "Sarah Johnson",
-                role: "E-commerce Owner",
-                content: "Working with Caleb was a game-changer for our business. His strategic approach and transparent communication made all the difference. Our ROAS increased by 400% in just 3 months!",
-                avatar: "SJ"
+                name: "Andy G.",
+                role: "",
+                content: "From the outset, it was evident that Caleb is truly an expert in the realm of Google Ads. His communication skills are exemplary, ensuring we were always on the same page and updated every step of the way. He possesses a deep understanding and a wealth of experience which became apparent as he diligently crafted our campaigns and steered our account to generate excellent leads with a remarkable ROI. Furthermore, Caleb consistently went above and beyond in his efforts, showcasing a level of dedication that is hard to come by. Even after ending this contract, he is still fully available to me which shows how much he cares for the teams he works with.",
+                image: andyG
               },
               {
-                name: "Michael Chen",
-                role: "Marketing Director",
-                content: "Finally, a Google Ads expert who actually understands our business goals. Caleb's data-driven strategies and honest approach helped us scale profitably without wasting budget.",
-                avatar: "MC"
-              },
-              {
-                name: "Emma Rodriguez",
-                role: "Founder & CEO",
-                content: "Caleb doesn't just run ads – he partners with you for growth. His unique approach and commitment to results has transformed how we think about paid advertising.",
-                avatar: "ER"
+                name: "Nathaniel C.",
+                role: "",
+                content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
+                image: null
               }
             ].map((testimonial, index) => (
-              <Card 
-                key={index} 
-                className="p-8 bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/50 transition-all w-[400px] flex-shrink-0 shadow-xl"
+              <Card
+                key={index}
+                className="p-6 bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/50 transition-all w-[440px] flex-shrink-0 shadow-xl"
               >
-                <div className="flex items-center gap-1 mb-6">
+                <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6" fill="#DF7606" color="#DF7606" />
+                    <Star key={i} className="w-5 h-5" fill="#DF7606" color="#DF7606" />
                   ))}
                 </div>
-                <p className="text-lg text-foreground mb-8 leading-relaxed">
+                <p className="text-base text-foreground mb-5 leading-relaxed line-clamp-6">
                   "{testimonial.content}"
                 </p>
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-xl">
-                    {testimonial.avatar}
-                  </div>
+                <div className="flex items-center gap-3">
+                  {testimonial.image ? (
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                    />
+                  ) : (
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-sm flex-shrink-0">
+                      {testimonial.name.split(' ')[0][0]}{testimonial.name.split(' ')[1][0]}
+                    </div>
+                  )}
                   <div>
-                    <div className="font-bold text-lg">{testimonial.name}</div>
-                    <div className="text-white">{testimonial.role}</div>
+                    <div className="font-bold text-base">{testimonial.name}</div>
                   </div>
                 </div>
               </Card>
@@ -567,34 +609,37 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-60" />
-              <img 
-                src={promiseProfile} 
-                alt="Caleb Promise" 
+              <img
+                src={promiseProfile}
+                alt="Caleb Promise"
                 className="relative rounded-3xl shadow-2xl w-full object-cover"
               />
             </div>
-            
+
             <div className="space-y-6 animate-fade-in-up">
-              <div className="inline-block mb-4">
-                <span className="text-sm font-semibold uppercase tracking-wider text-white">
-                  I won't sell you the moon and the stars.
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold">
-                What I <span className="text-accent">Can Promise</span>
-              </h2>
-              <div className="space-y-4 text-lg text-white">
-                <p>
-                  Even if I'm <span className="text-foreground font-semibold">
-                    the fanciest of every ads</span>, I can{" "}
-                  <span className="text-foreground font-semibold">
-                    only promise one thing</span>: I'll do <span className="text-foreground font-semibold">
-                    a thorough diagnosis</span> up front, then execute{" "}
-                  <span className="text-foreground font-semibold">only</span> and{" "}
-                  <span className="text-foreground font-semibold">aggressively</span>. But always,{" "}
-                  <span className="text-foreground font-semibold">
-                    always thoughtfully</span>.
-                </p>
+              <div className="space-y-6">
+                <div>
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    What I <span className="text-destructive/50">Can't</span> Promise
+                  </h2>
+                  <div className="space-y-4 text-lg text-white">
+                    <p className="font-semibold">Overnight Success.</p>
+                    <p className="font-semibold">You'll become a millionaire.</p>
+                    <p className="font-semibold">Every month will be profitable.</p>
+                  </div>
+                </div>
+
+                <div className="border-t border-border/30 pt-6">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    What I <span className="text-accent">Can</span> Promise
+                  </h2>
+                  <div className="space-y-4 text-lg text-white">
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always being 100% honest with you.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always me managing your ads.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always being the best at what I do.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always investing and treating your money, like my own.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -610,7 +655,7 @@ const Index = () => {
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
             <p className="text-xl text-white">
-              Schedule a call with me
+              Schedule a free call with me. What do you have to lose?
             </p>
           </div>
 
