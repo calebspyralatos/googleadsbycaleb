@@ -3,7 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ProjectImage } from "@/components/ui/project-image";
-import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, XCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React from "react";
 
@@ -60,6 +61,7 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import upworkProof from "@/assets/upwork-proof.jpg";
+import courseImage from "@/assets/course-image.png";
 import adamK from "@/assets/Adam K.jpeg";
 import davidG from "@/assets/David G.webp";
 import jankaM from "@/assets/Janka-Mifsud.png";
@@ -195,6 +197,8 @@ const TestimonialCarousel = () => {
 };
 
 const Index = () => {
+  const [selectedTestimonial, setSelectedTestimonial] = React.useState<{ name: string; content: string; image: any } | null>(null);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
@@ -215,11 +219,11 @@ const Index = () => {
         <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              I specialize in Google Ads for local businesses. <span className="inline-block px-3 py-2 bg-secondary text-white rounded-full" style={{ verticalAlign: 'text-bottom' }}>Only.</span>
+              I specialize in Google Ads for local businesses. <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.5rem', paddingBottom: '0.75rem' }}>Only.</span>
             </h1>
             <div className="space-y-4">
               <p className="text-xl text-white">
-                If you run a local business, I will help you get more leads, calls and store visits.
+                If you run a local business, I will help you generate more revenue by increasing your number of leads, calls, and store visits
               </p>
             </div>
 
@@ -246,11 +250,12 @@ const Index = () => {
           <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-4 animate-fade-in max-w-2xl">
-                <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                <h2 className="text-2xl md:text-5xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
-                <p className="text-base md:text-lg text-white leading-relaxed">
-                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads <span className="text-secondary">primarily for local businesses.</span>
+                <p className="text-lg md:text-xl text-white leading-relaxed">
+                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads<br />
+                  <span className="inline-block px-2 text-white rounded-full mt-2" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>primarily for local businesses.</span>
                 </p>
               </div>
               
@@ -282,7 +287,7 @@ const Index = () => {
       <section className="px-4 md:px-8 lg:px-16 py-32 bg-gradient-to-b from-background to-card/20 relative min-h-screen flex items-center">
         <div className="max-w-[900px] mx-auto relative z-10 w-full">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-2">
-            What Makes Me <span className="inline-block px-4 py-3 bg-secondary text-white rounded-full" style={{ verticalAlign: 'text-bottom' }}>Different</span>
+            What Makes Me <span className="inline-block px-4 py-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'text-bottom' }}>Different</span>
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
 
@@ -306,7 +311,7 @@ const Index = () => {
             <div className="border-b border-white/20 w-64 mx-auto" />
 
             <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
-              Also, 99% of media buyers have never risked their own money on ads.
+              Also, 95% of media buyers have never risked their own money on ads.
             </p>
 
             <div className="border-b border-white/20 w-64 mx-auto" />
@@ -367,43 +372,41 @@ const Index = () => {
 
       {/* Recent Projects */}
       <section className="px-4 md:px-8 lg:px-16 py-20 relative bg-gradient-to-b from-background to-card/10">
-        <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="max-w-[1100px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Recent Projects
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
-          
-          <div className="space-y-16">
+
+          <div className="space-y-24">
             {/* Project 1 */}
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4 animate-fade-in">
-                <h3 className="text-3xl font-bold">E-Commerce Case Study #1</h3>
-                <div className="flex items-center gap-4 text-sm">
-                  <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-semibold">
-                    GOOGLE
-                  </span>
-                  <span className="text-white">January - April 2025</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-primary">
-                      <CountUpNumber value="+487%" />
-                    </div>
-                    <div className="text-sm text-white">ROAS Increase</div>
-                  </Card>
-                  <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-accent">
+            <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
+              <div className="space-y-6 animate-fade-in">
+                <h3 className="text-4xl md:text-5xl font-bold">Local Business Case Study #1</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
+                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="$142k" />
                     </div>
-                    <div className="text-sm text-white">Revenue Generated</div>
-                  </Card>
+                  </div>
+                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CTA</div>
+                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                      <CountUpNumber value="+487%" />
+                    </div>
+                  </div>
+                </div>
+                <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                  <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
+                  <div className="text-3xl font-bold text-white">January - April 2025</div>
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
-                <ProjectImage 
-                  src={project1} 
-                  alt="Project 1" 
+                <ProjectImage
+                  src={project1}
+                  alt="Project 1"
                   className="relative shadow-2xl border border-accent/20"
                   interactive
                 />
@@ -411,75 +414,129 @@ const Index = () => {
             </div>
 
             {/* Project 2 */}
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="grid md:grid-cols-[1.1fr_1fr] gap-8 items-center">
               <div className="relative group order-2 md:order-1 animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
-                <ProjectImage 
-                  src={project2} 
-                  alt="Project 2" 
+                <ProjectImage
+                  src={project2}
+                  alt="Project 2"
                   className="relative shadow-2xl border border-accent/20"
                   interactive
                 />
               </div>
-              <div className="space-y-4 order-1 md:order-2 animate-fade-in">
-                <h3 className="text-3xl font-bold">E-Commerce Case Study #2</h3>
-                <div className="flex items-center gap-4 text-sm">
-                  <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-semibold">
-                    GOOGLE
-                  </span>
-                  <span className="text-white">August 2023</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-primary">
-                      <CountUpNumber value="+312%" />
-                    </div>
-                    <div className="text-sm text-white">Conversion Rate</div>
-                  </Card>
-                  <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-accent">
+              <div className="space-y-6 order-1 md:order-2 animate-fade-in">
+                <h3 className="text-4xl md:text-5xl font-bold">Local Business Case Study #2</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
+                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="$89k" />
                     </div>
-                    <div className="text-sm text-white">Revenue Generated</div>
-                  </Card>
+                  </div>
+                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CTA</div>
+                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                      <CountUpNumber value="+312%" />
+                    </div>
+                  </div>
+                </div>
+                <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                  <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
+                  <div className="text-3xl font-bold text-white">August 2023</div>
                 </div>
               </div>
             </div>
 
             {/* Project 3 */}
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4 animate-fade-in">
-                <h3 className="text-3xl font-bold">E-Commerce Case Study #3</h3>
-                <div className="flex items-center gap-4 text-sm">
-                  <span className="px-3 py-1 bg-accent/10 text-accent rounded-full font-semibold">
-                    GOOGLE
-                  </span>
-                  <span className="text-white">January - August 2023</span>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-primary">
-                      <CountUpNumber value="+271%" />
-                    </div>
-                    <div className="text-sm text-white">Revenue Growth</div>
-                  </Card>
-                  <Card className="p-4 bg-card/50 backdrop-blur-sm">
-                    <div className="text-2xl font-bold text-accent">
+            <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
+              <div className="space-y-6 animate-fade-in">
+                <h3 className="text-4xl md:text-5xl font-bold">Local Business Case Study #3</h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
+                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="$274k" />
                     </div>
-                    <div className="text-sm text-white">Total Revenue</div>
-                  </Card>
+                  </div>
+                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CTA</div>
+                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                      <CountUpNumber value="+271%" />
+                    </div>
+                  </div>
+                </div>
+                <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                  <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
+                  <div className="text-3xl font-bold text-white">January - August 2023</div>
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
-                <ProjectImage 
-                  src={project3} 
-                  alt="Project 3" 
+                <ProjectImage
+                  src={project3}
+                  alt="Project 3"
                   className="relative shadow-2xl border border-accent/20"
                   interactive
                 />
               </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-16">
+            <Button variant="cta" size="xl">
+              Book a Call
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Google Reviews Course Section */}
+      <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative">
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 items-center">
+            <div className="space-y-8 animate-fade-in">
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                Creator of the Best-Selling Google Reviews Course
+              </h2>
+
+              <div className="space-y-6 text-lg md:text-xl text-white leading-relaxed">
+                <p>
+                  Most 'review advice' online is outdated, unrealistic, or even dangerous.
+                </p>
+
+                <p>
+                  Local business owners, like you, needed something that actually works.
+                </p>
+
+                <p>
+                  Something ethical.
+                </p>
+
+                <p>
+                  Something proven.
+                </p>
+
+                <p>
+                  So, I built it — the most advanced, proven, and effective system for gathering and managing Google reviews for local businesses.
+                </p>
+
+                <p>
+                  And each time clients use it, together with Google Ads, it has helped them outrank their competition, stand out in their area & niche, and increase their revenue consistently.
+                </p>
+
+                <p className="font-semibold">
+                  Every client I work with gets free lifetime access to it.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative animate-fade-in-up">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-60" />
+              <img
+                src={courseImage}
+                alt="Google Reviews Course"
+                className="relative rounded-3xl shadow-2xl w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -498,7 +555,7 @@ const Index = () => {
                 href="https://www.upwork.com" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="underline hover:opacity-80 font-semibold"
+                className="underline hover:opacity-80 font-bold"
                 style={{ color: '#63c341' }}
               >
                 UpWork profile
@@ -559,19 +616,68 @@ const Index = () => {
                 role: "",
                 content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
                 image: null
+              },
+              {
+                name: "Adam K.",
+                role: "",
+                content: "Caleb is one of the best contractors I've ever worked with. Incredible at Google Ads.",
+                image: adamK
+              },
+              {
+                name: "David G.",
+                role: "",
+                content: "Caleb was excellent to work with. I vetted a handful of freelancers, but ended up working with Caleb due to a mix of his obvious expertise and his shared passion for the work I do for my specific clients. I plan to continue using Caleb going forward as I've already seen great results from his help with my Google ads just a month into the campaign. You will be in good hands if you decide to work with Caleb.",
+                image: davidG
+              },
+              {
+                name: "Janka M.",
+                role: "",
+                content: "Caleb was great to work with, very honest and available. He set up campaigns and took the time to explain how things work. I will work with him again.",
+                image: jankaM
+              },
+              {
+                name: "Brandon R.",
+                role: "",
+                content: "Caleb was great! Not only does he have an incredible amount of knowledge about Google Ads, but actively makes recommendations and suggestions to keep improving the account. He was very prompt in all communication and had incredible dedication to make the project a success!",
+                image: brandonR
+              },
+              {
+                name: "Alex C.",
+                role: "",
+                content: "I highly recommend Caleb for his outstanding work as our Google Media Buyer. His expertise significantly improved our online presence, optimizing campaigns for impressive results. Caleb is not only highly skilled but also a pleasure to work with, ensuring clear communication and a positive collaboration experience. We look forward to future projects together.",
+                image: alexC
+              },
+              {
+                name: "Daniel B.",
+                role: "",
+                content: "Working with Caleb was a great experience. He's a genuinely nice guy and has the skill we need to get the job done efficiently and at a high-quality level. He's a great communicator.",
+                image: null
+              },
+              {
+                name: "Andy G.",
+                role: "",
+                content: "From the outset, it was evident that Caleb is truly an expert in the realm of Google Ads. His communication skills are exemplary, ensuring we were always on the same page and updated every step of the way. He possesses a deep understanding and a wealth of experience which became apparent as he diligently crafted our campaigns and steered our account to generate excellent leads with a remarkable ROI. Furthermore, Caleb consistently went above and beyond in his efforts, showcasing a level of dedication that is hard to come by. Even after ending this contract, he is still fully available to me which shows how much he cares for the teams he works with.",
+                image: andyG
+              },
+              {
+                name: "Nathaniel C.",
+                role: "",
+                content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
+                image: null
               }
             ].map((testimonial, index) => (
               <Card
                 key={index}
-                className="p-6 bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/50 transition-all w-[440px] flex-shrink-0 shadow-xl"
+                onClick={() => setSelectedTestimonial(testimonial)}
+                className="p-6 bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/50 transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
               >
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-5 h-5" fill="#DF7606" color="#DF7606" />
                   ))}
                 </div>
-                <p className="text-base text-foreground mb-5 leading-relaxed line-clamp-6">
-                  "{testimonial.content}"
+                <p className="text-lg text-foreground mb-5 leading-relaxed line-clamp-6">
+                  {testimonial.content}
                 </p>
                 <div className="flex items-center gap-3">
                   {testimonial.image ? (
@@ -620,24 +726,24 @@ const Index = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                    What I <span className="text-destructive/50">Can't</span> Promise
+                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#de3323', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can't</span> Promise
                   </h2>
-                  <div className="space-y-4 text-lg text-white">
-                    <p className="font-semibold">Overnight Success.</p>
-                    <p className="font-semibold">You'll become a millionaire.</p>
-                    <p className="font-semibold">Every month will be profitable.</p>
+                  <div className="space-y-4 text-2xl text-white">
+                    <p className="font-semibold flex items-center gap-3"><XCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#de3323' }} />Overnight Success.</p>
+                    <p className="font-semibold flex items-center gap-3"><XCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#de3323' }} />You'll become a millionaire.</p>
+                    <p className="font-semibold flex items-center gap-3"><XCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#de3323' }} />Every month will be profitable.</p>
                   </div>
                 </div>
 
                 <div className="border-t border-border/30 pt-6">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                    What I <span className="text-accent">Can</span> Promise
+                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
                   </h2>
-                  <div className="space-y-4 text-lg text-white">
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always being 100% honest with you.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always me managing your ads.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always being the best at what I do.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 text-accent flex-shrink-0" />Always investing and treating your money, like my own.</p>
+                  <div className="space-y-4 text-2xl text-white">
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being 100% honest with you.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always me managing your ads.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being the best at what I do.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always investing and treating your money, like my own.</p>
                   </div>
                 </div>
               </div>
@@ -651,11 +757,11 @@ const Index = () => {
         <div className="max-w-[1000px] mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Are Your Meta Ads In The Wrong Hands?
+              Are Your Google Ads In The Wrong Hands?
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-            <p className="text-xl text-white">
-              Schedule a free call with me. What do you have to lose?
+            <p className="text-2xl text-white">
+              Schedule a call with me.
             </p>
           </div>
 
@@ -722,6 +828,38 @@ const Index = () => {
           </p>
         </div>
       </footer>
+
+      {/* Testimonial Dialog */}
+      <Dialog open={!!selectedTestimonial} onOpenChange={() => setSelectedTestimonial(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-3">
+              {selectedTestimonial?.image ? (
+                <img
+                  src={selectedTestimonial.image}
+                  alt={selectedTestimonial.name}
+                  className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                />
+              ) : selectedTestimonial && (
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-sm flex-shrink-0">
+                  {selectedTestimonial.name.split(' ')[0][0]}{selectedTestimonial.name.split(' ')[1][0]}
+                </div>
+              )}
+              <span>{selectedTestimonial?.name}</span>
+            </DialogTitle>
+          </DialogHeader>
+          <div className="mt-4">
+            <div className="flex items-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5" fill="#DF7606" color="#DF7606" />
+              ))}
+            </div>
+            <p className="text-lg leading-relaxed text-foreground">
+              {selectedTestimonial?.content}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

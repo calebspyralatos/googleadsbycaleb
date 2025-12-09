@@ -104,7 +104,7 @@ export default {
         "fade-in-up": "fade-in-up 0.8s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
-        "scroll-right": "scroll-right 30s linear infinite",
+        "scroll-right": "scroll-right 70s linear infinite",
       },
     },
   },
