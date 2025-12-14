@@ -112,13 +112,6 @@ const TestimonialCarousel = () => {
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonialVideos.length) % testimonialVideos.length);
   };
-  
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      handleNext();
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [handleNext]);
 
   return (
     <>
@@ -199,6 +192,30 @@ const TestimonialCarousel = () => {
 const Index = () => {
   const [selectedTestimonial, setSelectedTestimonial] = React.useState<{ name: string; content: string; image: any } | null>(null);
 
+  React.useEffect(() => {
+    // Check if script is already loaded
+    if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    // Listen for Calendly events
+    const handleCalendlyEvent = (e: MessageEvent) => {
+      if (e.data.event === 'calendly.event_scheduled') {
+        // Redirect to thank you page when meeting is scheduled
+        window.location.href = '/thank-you';
+      }
+    };
+
+    window.addEventListener('message', handleCalendlyEvent);
+
+    return () => {
+      window.removeEventListener('message', handleCalendlyEvent);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
@@ -223,7 +240,7 @@ const Index = () => {
             </h1>
             <div className="space-y-4">
               <p className="text-xl text-white">
-                If you run a local business, I will help you generate more revenue by increasing your number of leads, calls, and store visits
+                If you run a local business, I will help you generate more revenue by increasing your number of leads, calls, and store visits.
               </p>
             </div>
 
@@ -254,7 +271,7 @@ const Index = () => {
                   Hi, I'm Caleb.
                 </h2>
                 <p className="text-lg md:text-xl text-white leading-relaxed">
-                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads<br />
+                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads,<br />
                   <span className="inline-block px-2 text-white rounded-full mt-2" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>primarily for local businesses.</span>
                 </p>
               </div>
@@ -285,7 +302,7 @@ const Index = () => {
 
       {/* What Makes Me Different */}
       <section className="px-4 md:px-8 lg:px-16 py-32 bg-gradient-to-b from-background to-card/20 relative min-h-screen flex items-center">
-        <div className="max-w-[900px] mx-auto relative z-10 w-full">
+        <div className="max-w-[1200px] mx-auto relative z-10 w-full">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-2">
             What Makes Me <span className="inline-block px-4 py-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'text-bottom' }}>Different</span>
           </h2>
@@ -311,13 +328,19 @@ const Index = () => {
             <div className="border-b border-white/20 w-64 mx-auto" />
 
             <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+              I don’t “also manage” e-comm stores. I wake up & go to bed managing local businesses. Only.
+            </p>
+
+            <div className="border-b border-white/20 w-64 mx-auto" />
+
+            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               Also, 95% of media buyers have never risked their own money on ads.
             </p>
 
             <div className="border-b border-white/20 w-64 mx-auto" />
 
             <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
-              I have. Running ads for my own page and Google Reviews course.
+              But, i have. Running ads for my own page and Google Reviews course.
             </p>
 
             <div className="border-b border-white/20 w-64 mx-auto" />
@@ -382,17 +405,20 @@ const Index = () => {
             {/* Project 1 */}
             <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
               <div className="space-y-6 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold">Local Business Case Study #1</h3>
+                <h3 className="text-4xl md:text-5xl font-bold">
+                  Local Business<br />
+                  Case Study #1
+                </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
-                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
+                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
                       <CountUpNumber value="$142k" />
                     </div>
                   </div>
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CTA</div>
-                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
+                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="+487%" />
                     </div>
                   </div>
@@ -425,17 +451,20 @@ const Index = () => {
                 />
               </div>
               <div className="space-y-6 order-1 md:order-2 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold">Local Business Case Study #2</h3>
+                <h3 className="text-4xl md:text-5xl font-bold">
+                  Local Business<br />
+                  Case Study #2
+                </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
-                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
+                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
                       <CountUpNumber value="$89k" />
                     </div>
                   </div>
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CTA</div>
-                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
+                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="+312%" />
                     </div>
                   </div>
@@ -450,17 +479,20 @@ const Index = () => {
             {/* Project 3 */}
             <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
               <div className="space-y-6 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold">Local Business Case Study #3</h3>
+                <h3 className="text-4xl md:text-5xl font-bold">
+                  Local Business<br />
+                  Case Study #3
+                </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
-                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
+                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
                       <CountUpNumber value="$274k" />
                     </div>
                   </div>
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CTA</div>
-                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
+                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="+271%" />
                     </div>
                   </div>
@@ -501,7 +533,7 @@ const Index = () => {
 
               <div className="space-y-6 text-lg md:text-xl text-white leading-relaxed">
                 <p>
-                  Most 'review advice' online is outdated, unrealistic, or even dangerous.
+                  Most "review advice" online is outdated, unrealistic, or even dangerous.
                 </p>
 
                 <p>
@@ -524,8 +556,8 @@ const Index = () => {
                   And each time clients use it, together with Google Ads, it has helped them outrank their competition, stand out in their area & niche, and increase their revenue consistently.
                 </p>
 
-                <p className="font-semibold">
-                  Every client I work with gets free lifetime access to it.
+                <p>
+                  <span className="inline-block px-2 text-white rounded-full" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Every client I work with gets free lifetime access to it.</span>
                 </p>
               </div>
             </div>
@@ -737,13 +769,13 @@ const Index = () => {
 
                 <div className="border-t border-border/30 pt-6">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
+                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#86f950', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
                   </h2>
                   <div className="space-y-4 text-2xl text-white">
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being 100% honest with you.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always me managing your ads.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being the best at what I do.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always investing and treating your money, like my own.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always being 100% honest with you.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always me managing your ads.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always being the best at what I do.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always investing and treating your money, like my own.</p>
                   </div>
                 </div>
               </div>
@@ -754,63 +786,20 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
-        <div className="max-w-[1000px] mx-auto relative z-10">
+        <div className="max-w-[1400px] mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Are Your Google Ads In The Wrong Hands?
             </h2>
             <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-            <p className="text-2xl text-white">
+            <p className="text-3xl text-white font-bold">
               Schedule a call with me.
             </p>
           </div>
 
-          <Card className="p-8 md:p-12 bg-card/80 backdrop-blur-sm border-border/50">
-            <div className="space-y-8">
-              <div>
-                <label className="block text-xl font-semibold mb-6 text-center">
-                  How much did you spend on Meta ads last month? (roughly) *
-                </label>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      console.log('Selected: 0-20k$');
-                      // Handle navigation or form submission
-                    }}
-                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-white hover:bg-muted/10 transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="text-center">
-                      <div className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors">
-                        0-20k$
-                      </div>
-                      <div className="text-sm text-white">
-                        Getting started
-                      </div>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      console.log('Selected: 20k$+');
-                      // Handle navigation or form submission
-                    }}
-                    className="group relative p-8 rounded-xl border-2 border-border/50 bg-background/50 hover:border-white hover:bg-muted/10 transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="text-center">
-                      <div className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors">
-                        20k$+
-                      </div>
-                      <div className="text-sm text-white">
-                        Scaling phase
-                      </div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </Card>
+          <div className="relative p-8 rounded-3xl max-w-[1200px] mx-auto" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
+            <div className="calendly-inline-widget" data-url="https://calendly.com/googleadsbycaleb/new-meeting" style={{ minWidth: '320px', height: '700px' }}></div>
+          </div>
         </div>
       </section>
 
