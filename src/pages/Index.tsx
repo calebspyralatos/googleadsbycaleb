@@ -210,13 +210,20 @@ const TestimonialCarousel = () => {
 
 const Index = () => {
   const [selectedTestimonial, setSelectedTestimonial] = React.useState<{ name: string; content: string; image: any } | null>(null);
+  const [isCalendlyOpen, setIsCalendlyOpen] = React.useState(false);
 
   React.useEffect(() => {
-    // Check if script is already loaded
+    // Load Calendly script
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+
+    script.onload = () => {
+      // Script loaded, Calendly should auto-initialize
+      console.log('Calendly script loaded');
+    };
+
     if (!document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://assets.calendly.com/assets/external/widget.js';
-      script.async = true;
       document.body.appendChild(script);
     }
 
@@ -235,6 +242,24 @@ const Index = () => {
     };
   }, []);
 
+  React.useEffect(() => {
+    // Initialize Calendly widget in modal when it opens
+    if (isCalendlyOpen) {
+      const timer = setTimeout(() => {
+        const modalWidget = document.getElementById('calendly-modal-widget');
+        if (modalWidget && (window as any).Calendly) {
+          (window as any).Calendly.initInlineWidget({
+            url: 'https://calendly.com/googleadsbycaleb/new-meeting',
+            parentElement: modalWidget,
+          });
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isCalendlyOpen]);
+
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
@@ -248,7 +273,7 @@ const Index = () => {
           }}
         />
         <div className="absolute top-8 right-4 md:right-8 z-10">
-          <MovingBorderButton duration={6000}>
+          <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
             Book a Call
           </MovingBorderButton>
         </div>
@@ -263,11 +288,11 @@ const Index = () => {
               </p>
             </div>
 
-            <MovingBorderButton duration={6000}>
+            <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
             </MovingBorderButton>
           </div>
-          
+
           <div className="relative animate-fade-in-up">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-70" />
             <img
@@ -402,9 +427,9 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Button variant="cta" size="xl">
+            <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
-            </Button>
+            </MovingBorderButton>
           </div>
         </div>
       </section>
@@ -554,9 +579,9 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-16">
-            <Button variant="cta" size="xl">
+            <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
-            </Button>
+            </MovingBorderButton>
           </div>
         </div>
       </section>
@@ -773,9 +798,9 @@ const Index = () => {
 
         <div className="container mx-auto px-4">
           <div className="text-center mt-12">
-            <Button variant="cta" size="xl">
+            <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
-            </Button>
+            </MovingBorderButton>
           </div>
         </div>
       </section>
@@ -885,6 +910,20 @@ const Index = () => {
             <p className="text-lg leading-relaxed text-foreground">
               {selectedTestimonial?.content}
             </p>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Calendly Modal */}
+      <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
+        <DialogContent className="max-w-[1200px] p-0 bg-transparent border-0">
+          <div className="relative p-8 rounded-3xl" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
+            <DialogHeader className="mb-6">
+              <DialogTitle className="text-3xl font-bold text-white text-center">
+                Schedule a call with me.
+              </DialogTitle>
+            </DialogHeader>
+            <div id="calendly-modal-widget" style={{ minWidth: '320px', height: '700px' }}></div>
           </div>
         </DialogContent>
       </Dialog>
