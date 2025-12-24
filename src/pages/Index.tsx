@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, XCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React from "react";
+import { MovingBorderButton } from "@/components/ui/moving-border-button";
 
 const CountUpNumber = ({ value, duration = 2000 }: { value: string; duration?: number }) => {
   const [displayValue, setDisplayValue] = React.useState("0");
@@ -68,6 +69,24 @@ import jankaM from "@/assets/Janka-Mifsud.png";
 import brandonR from "@/assets/Brandon Rall.jpeg";
 import alexC from "@/assets/Alex Chen.png";
 import andyG from "@/assets/Andy G.jpeg";
+
+// Logo imports
+import logo1 from "@/assets/logos/1.png";
+import logo2 from "@/assets/logos/2.png";
+import logo3 from "@/assets/logos/3.png";
+import logo4 from "@/assets/logos/4.png";
+import logo5 from "@/assets/logos/5.png";
+import logo6 from "@/assets/logos/6.png";
+import logo7 from "@/assets/logos/7.png";
+import logo8 from "@/assets/logos/8.png";
+import logo9 from "@/assets/logos/9.png";
+import logo10 from "@/assets/logos/10.png";
+import logo11 from "@/assets/logos/11.png";
+import logo12 from "@/assets/logos/12.png";
+import logo13 from "@/assets/logos/13.png";
+import logo14 from "@/assets/logos/14.png";
+import logo15 from "@/assets/logos/15.png";
+import logo16 from "@/assets/logos/16.png";
 
 const testimonialVideos = [
   {
@@ -229,9 +248,9 @@ const Index = () => {
           }}
         />
         <div className="absolute top-8 right-4 md:right-8 z-10">
-          <Button variant="cta" size="xl">
+          <MovingBorderButton duration={6000}>
             Book a Call
-          </Button>
+          </MovingBorderButton>
         </div>
         <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-6 animate-fade-in">
@@ -244,9 +263,9 @@ const Index = () => {
               </p>
             </div>
 
-            <Button variant="cta" size="xl" className="text-base">
+            <MovingBorderButton duration={6000}>
               Book a Call
-            </Button>
+            </MovingBorderButton>
           </div>
           
           <div className="relative animate-fade-in-up">
@@ -260,8 +279,28 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Logo Carousel */}
+      <section className="pt-0 pb-32 overflow-hidden bg-background/50">
+        <div className="relative">
+          <div className="flex animate-scroll-left whitespace-nowrap">
+            {/* First set of logos */}
+            {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
+              <div key={`logo-1-${index}`} className="inline-flex items-center justify-center mx-12 flex-shrink-0">
+                <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
+              <div key={`logo-2-${index}`} className="inline-flex items-center justify-center mx-12 flex-shrink-0">
+                <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Intro Section - Overlapping */}
-      <div className="px-4 md:px-8 lg:px-16 relative -mt-16 mb-48 z-10">
+      <div className="px-4 md:px-8 lg:px-16 relative mb-48 z-10">
         <div className="max-w-[1000px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
