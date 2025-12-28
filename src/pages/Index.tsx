@@ -17,20 +17,27 @@ const CountUpNumber = ({ value, duration = 2000 }: { value: string; duration?: n
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Extract numeric value
-          const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
+          // Extract numeric value and detect decimal points
+          const numericMatch = value.match(/[\d.]+/);
+          const numericValue = numericMatch ? parseFloat(numericMatch[0]) : 0;
           const isPercentage = value.includes("%");
-          const isCurrency = value.includes("$");
+          const isDollar = value.includes("$");
+          const isPound = value.includes("£");
+          const hasK = value.includes("K") || value.includes("k");
+          const hasDecimal = value.includes(".");
 
           const startTime = Date.now();
 
           const animate = () => {
             const now = Date.now();
             const progress = Math.min((now - startTime) / duration, 1);
-            const currentValue = Math.floor(progress * numericValue);
+            const currentValue = hasDecimal
+              ? (progress * numericValue).toFixed(2)
+              : Math.floor(progress * numericValue).toString();
 
             let display = currentValue.toString();
-            if (isCurrency) display = `$${display}k`;
+            if (isDollar) display = hasK ? `$${display}K` : `$${display}`;
+            if (isPound) display = hasK ? `£${display}K` : `£${display}`;
             if (isPercentage) display = `+${display}%`;
 
             setDisplayValue(display);
@@ -56,12 +63,12 @@ const CountUpNumber = ({ value, duration = 2000 }: { value: string; duration?: n
 
   return <div ref={elementRef}>{displayValue}</div>;
 };
-import heroProfile from "@/assets/hero-profile.jpg";
-import promiseProfile from "@/assets/promise-profile.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import upworkProof from "@/assets/upwork-proof.jpg";
+import heroProfile from "@/assets/hero-profile.png";
+import promiseProfile from "@/assets/promise-profile.png";
+import project1 from "@/assets/Case Study 1.png";
+import project2 from "@/assets/Case Study 2.png";
+import project3 from "@/assets/Case Study 3.png";
+import upworkProof from "@/assets/Copy of upwork profile.png";
 import courseImage from "@/assets/course-image.png";
 import adamK from "@/assets/Adam K.jpeg";
 import davidG from "@/assets/David G.webp";
@@ -69,6 +76,8 @@ import jankaM from "@/assets/Janka-Mifsud.png";
 import brandonR from "@/assets/Brandon Rall.jpeg";
 import alexC from "@/assets/Alex Chen.png";
 import andyG from "@/assets/Andy G.jpeg";
+import danielB from "@/assets/Daniel.webp";
+import nathanielC from "@/assets/Nathaniel.jpg";
 
 // Logo imports
 import logo1 from "@/assets/logos/1.png";
@@ -90,39 +99,39 @@ import logo16 from "@/assets/logos/16.png";
 
 const testimonialVideos = [
   {
-    thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop",
-    alt: "Sarah Johnson Video Testimonial",
-    name: "Sarah Johnson",
-    role: "E-commerce Owner"
+    vimeoUrl: "https://player.vimeo.com/video/1149226528?h=ed8c811dcf&title=0&byline=0&portrait=0",
+    alt: "Client Testimonial 1",
+    name: "Jonathan R."
   },
   {
-    thumbnail: "https://images.unsplash.com/photo-1556157382-97eda2f9e2bf?w=600&h=800&fit=crop",
-    alt: "Michael Chen Video Testimonial",
-    name: "Michael Chen",
-    role: "Marketing Director"
+    vimeoUrl: "https://player.vimeo.com/video/1149226571?h=2cccad25cf&title=0&byline=0&portrait=0",
+    alt: "Client Testimonial 2",
+    name: "Daniel J."
   },
   {
-    thumbnail: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=800&fit=crop",
-    alt: "Emma Rodriguez Video Testimonial",
-    name: "Emma Rodriguez",
-    role: "Founder & CEO"
+    vimeoUrl: "https://player.vimeo.com/video/1149226589?h=34752acc9d&title=0&byline=0&portrait=0",
+    alt: "Client Testimonial 3",
+    name: "Allysa C."
   },
   {
-    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&fit=crop",
-    alt: "David Martinez Video Testimonial",
-    name: "David Martinez",
-    role: "Growth Manager"
+    vimeoUrl: "https://player.vimeo.com/video/1149226609?h=ce237ca0e9&title=0&byline=0&portrait=0",
+    alt: "Client Testimonial 4",
+    name: "Logan C."
   },
   {
-    thumbnail: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop",
-    alt: "Lisa Anderson Video Testimonial",
-    name: "Lisa Anderson",
-    role: "Brand Director"
+    vimeoUrl: "https://player.vimeo.com/video/1149226621?h=a5731a2cac&title=0&byline=0&portrait=0",
+    alt: "Client Testimonial 5",
+    name: "Emily L."
+  },
+  {
+    vimeoUrl: "https://player.vimeo.com/video/1149226640?h=ce32bdbc5b&title=0&byline=0&portrait=0",
+    alt: "Client Testimonial 6",
+    name: "John B."
   }
 ];
 
 const TestimonialCarousel = () => {
-  const [currentIndex, setCurrentIndex] = React.useState(Math.floor(testimonialVideos.length / 2));
+  const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const handleNext = React.useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialVideos.length);
@@ -166,20 +175,16 @@ const TestimonialCarousel = () => {
               }}
             >
               <div className="relative w-full h-full rounded-3xl border-2 border-border/50 shadow-2xl overflow-hidden bg-card">
-                <img
-                  src={video.thumbnail}
-                  alt={video.alt}
-                  className="object-cover w-full h-full"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 via-background/20 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-foreground/90 backdrop-blur-sm flex items-center justify-center hover:scale-110 transition-transform cursor-pointer">
-                    <Play className="w-12 h-12 text-background ml-1" fill="currentColor" />
-                  </div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-center">
-                  <h3 className="font-bold text-xl md:text-2xl mb-2">{video.name}</h3>
-                  <p className="text-base md:text-lg text-white">{video.role}</p>
+                <iframe
+                  src={video.vimeoUrl}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                  allowFullScreen
+                  title={video.alt}
+                ></iframe>
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-xl font-bold text-white text-center">{video.name}</p>
                 </div>
               </div>
             </div>
@@ -263,7 +268,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 md:py-32 relative overflow-hidden">
+      <section className="px-4 md:px-8 lg:px-16 pt-12 md:pt-16 pb-20 md:pb-32 relative overflow-hidden">
         <div 
           className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
@@ -278,7 +283,7 @@ const Index = () => {
           </MovingBorderButton>
         </div>
         <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-4 animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               I specialize in Google Ads for local businesses. <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.5rem', paddingBottom: '0.75rem' }}>Only.</span>
             </h1>
@@ -293,40 +298,35 @@ const Index = () => {
             </MovingBorderButton>
           </div>
 
-          <div className="relative animate-fade-in-up">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-70" />
+          <div className="relative animate-fade-in-up flex justify-center items-center -mt-16">
             <img
-              src={heroProfile} 
-              alt="Caleb Profile" 
-              className="relative rounded-3xl shadow-2xl w-full object-cover aspect-square"
+              src={heroProfile}
+              alt="Caleb Profile"
+              className="max-w-[80%] h-auto object-contain"
             />
           </div>
         </div>
       </section>
 
       {/* Logo Carousel */}
-      <section className="pt-0 pb-32 overflow-hidden bg-background/50">
-        <div className="relative">
-          <div className="flex animate-scroll-left whitespace-nowrap">
-            {/* First set of logos */}
-            {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
-              <div key={`logo-1-${index}`} className="inline-flex items-center justify-center mx-12 flex-shrink-0">
-                <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-              </div>
-            ))}
-            {/* Duplicate set for seamless loop */}
-            {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
-              <div key={`logo-2-${index}`} className="inline-flex items-center justify-center mx-12 flex-shrink-0">
-                <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-              </div>
-            ))}
-          </div>
+      <section className="pt-0 pb-32 bg-background/50 overflow-hidden">
+        <div className="flex animate-scroll-left">
+          {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
+            <div key={`logo-1-${index}`} className="mx-12 flex-shrink-0">
+              <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+            </div>
+          ))}
+          {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
+            <div key={`logo-2-${index}`} className="mx-12 flex-shrink-0">
+              <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Intro Section - Overlapping */}
       <div className="px-4 md:px-8 lg:px-16 relative mb-48 z-10">
-        <div className="max-w-[1000px] mx-auto relative">
+        <div className="max-w-[1400px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -392,7 +392,7 @@ const Index = () => {
             <div className="border-b border-white/20 w-64 mx-auto" />
 
             <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
-              I don’t “also manage” e-comm stores. I wake up & go to bed managing local businesses. Only.
+              I wake up & go to bed managing Google Ads for local businesses. Only.
             </p>
 
             <div className="border-b border-white/20 w-64 mx-auto" />
@@ -404,7 +404,7 @@ const Index = () => {
             <div className="border-b border-white/20 w-64 mx-auto" />
 
             <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
-              But, i have. Running ads for my own page and Google Reviews course.
+              But, I have. Running ads for my own page and Google Reviews course.
             </p>
 
             <div className="border-b border-white/20 w-64 mx-auto" />
@@ -463,33 +463,39 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Recent Projects
           </h2>
+          <p className="text-center text-white mb-6 text-lg md:text-xl">
+              All conversions and CPA reflect calls, form submissions, and/or store visits, only. No soft conversions are included, such as clicks, page views, etc.
+
+              <span className="text-white">.</span>
+            </p>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
 
           <div className="space-y-24">
             {/* Project 1 */}
             <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
               <div className="space-y-6 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold">
+                <h3 className="text-4xl md:text-5xl font-bold text-center">
                   Local Business<br />
                   Case Study #1
                 </h3>
+                <br />
                 <div className="grid grid-cols-2 gap-6">
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
                     <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
-                      <CountUpNumber value="$142k" />
+                      <CountUpNumber value="£9.6K" />
                     </div>
                   </div>
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
                     <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
-                      <CountUpNumber value="+487%" />
+                      <CountUpNumber value="£21.67" />
                     </div>
                   </div>
                 </div>
                 <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                   <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
-                  <div className="text-3xl font-bold text-white">January - April 2025</div>
+                  <div className="text-3xl font-bold text-white">October 2025</div>
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
@@ -515,27 +521,28 @@ const Index = () => {
                 />
               </div>
               <div className="space-y-6 order-1 md:order-2 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold">
+                <h3 className="text-4xl md:text-5xl font-bold text-center">
                   Local Business<br />
                   Case Study #2
                 </h3>
+                <br />
                 <div className="grid grid-cols-2 gap-6">
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
                     <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
-                      <CountUpNumber value="$89k" />
+                      <CountUpNumber value="$65K" />
                     </div>
                   </div>
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
                     <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
-                      <CountUpNumber value="+312%" />
+                      <CountUpNumber value="$3.10" />
                     </div>
                   </div>
                 </div>
                 <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                   <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
-                  <div className="text-3xl font-bold text-white">August 2023</div>
+                  <div className="text-3xl font-bold text-white">October 2024 - October 2025</div>
                 </div>
               </div>
             </div>
@@ -543,27 +550,28 @@ const Index = () => {
             {/* Project 3 */}
             <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
               <div className="space-y-6 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold">
+                <h3 className="text-4xl md:text-5xl font-bold text-center">
                   Local Business<br />
                   Case Study #3
                 </h3>
+                <br />
                 <div className="grid grid-cols-2 gap-6">
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
                     <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
-                      <CountUpNumber value="$274k" />
+                      <CountUpNumber value="$2.4K" />
                     </div>
                   </div>
                   <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                     <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
                     <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
-                      <CountUpNumber value="+271%" />
+                      <CountUpNumber value="$40.28" />
                     </div>
                   </div>
                 </div>
                 <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
                   <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
-                  <div className="text-3xl font-bold text-white">January - August 2023</div>
+                  <div className="text-3xl font-bold text-white">October 2025</div>
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
@@ -628,10 +636,10 @@ const Index = () => {
 
             <div className="relative animate-fade-in-up">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-60" />
-              <img
+              <ProjectImage
                 src={courseImage}
                 alt="Google Reviews Course"
-                className="relative rounded-3xl shadow-2xl w-full object-cover"
+                className="relative shadow-2xl"
               />
             </div>
           </div>
@@ -667,105 +675,106 @@ const Index = () => {
             {[
               {
                 name: "Adam K.",
-                role: "",
+                role: "CEO | Founder of Equa Agency",
                 content: "Caleb is one of the best contractors I've ever worked with. Incredible at Google Ads.",
                 image: adamK
               },
               {
                 name: "David G.",
-                role: "",
+                role: "CEO | Founder of Five Loaves",
                 content: "Caleb was excellent to work with. I vetted a handful of freelancers, but ended up working with Caleb due to a mix of his obvious expertise and his shared passion for the work I do for my specific clients. I plan to continue using Caleb going forward as I've already seen great results from his help with my Google ads just a month into the campaign. You will be in good hands if you decide to work with Caleb.",
                 image: davidG
               },
               {
                 name: "Janka M.",
-                role: "",
+                role: "CEO | Founder of Brainyyack",
                 content: "Caleb was great to work with, very honest and available. He set up campaigns and took the time to explain how things work. I will work with him again.",
                 image: jankaM
               },
               {
                 name: "Brandon R.",
-                role: "",
+                role: "CEO | Founder of Novellus",
                 content: "Caleb was great! Not only does he have an incredible amount of knowledge about Google Ads, but actively makes recommendations and suggestions to keep improving the account. He was very prompt in all communication and had incredible dedication to make the project a success!",
                 image: brandonR
               },
               {
                 name: "Alex C.",
-                role: "",
+                role: "CEO | Founder of Bright Sport",
                 content: "I highly recommend Caleb for his outstanding work as our Google Media Buyer. His expertise significantly improved our online presence, optimizing campaigns for impressive results. Caleb is not only highly skilled but also a pleasure to work with, ensuring clear communication and a positive collaboration experience. We look forward to future projects together.",
                 image: alexC
               },
               {
                 name: "Daniel B.",
-                role: "",
+                role: "Head of Marketing at AlumComplete",
                 content: "Working with Caleb was a great experience. He's a genuinely nice guy and has the skill we need to get the job done efficiently and at a high-quality level. He's a great communicator.",
-                image: null
+                image: danielB
               },
               {
                 name: "Andy G.",
-                role: "",
+                role: "CEO | Founder of Boost Education",
                 content: "From the outset, it was evident that Caleb is truly an expert in the realm of Google Ads. His communication skills are exemplary, ensuring we were always on the same page and updated every step of the way. He possesses a deep understanding and a wealth of experience which became apparent as he diligently crafted our campaigns and steered our account to generate excellent leads with a remarkable ROI. Furthermore, Caleb consistently went above and beyond in his efforts, showcasing a level of dedication that is hard to come by. Even after ending this contract, he is still fully available to me which shows how much he cares for the teams he works with.",
                 image: andyG
               },
               {
                 name: "Nathaniel C.",
-                role: "",
+                role: "Head of Marketing at My Front Page",
                 content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
-                image: null
+                image: nathanielC
               },
               {
                 name: "Adam K.",
-                role: "",
+                role: "CEO | Founder of Equa Agency",
                 content: "Caleb is one of the best contractors I've ever worked with. Incredible at Google Ads.",
                 image: adamK
               },
               {
                 name: "David G.",
-                role: "",
+                role: "CEO | Founder of Five Loaves",
                 content: "Caleb was excellent to work with. I vetted a handful of freelancers, but ended up working with Caleb due to a mix of his obvious expertise and his shared passion for the work I do for my specific clients. I plan to continue using Caleb going forward as I've already seen great results from his help with my Google ads just a month into the campaign. You will be in good hands if you decide to work with Caleb.",
                 image: davidG
               },
               {
                 name: "Janka M.",
-                role: "",
+                role: "CEO | Founder of Brainyyack",
                 content: "Caleb was great to work with, very honest and available. He set up campaigns and took the time to explain how things work. I will work with him again.",
                 image: jankaM
               },
               {
                 name: "Brandon R.",
-                role: "",
+                role: "CEO | Founder of Novellus",
                 content: "Caleb was great! Not only does he have an incredible amount of knowledge about Google Ads, but actively makes recommendations and suggestions to keep improving the account. He was very prompt in all communication and had incredible dedication to make the project a success!",
                 image: brandonR
               },
               {
                 name: "Alex C.",
-                role: "",
+                role: "CEO | Founder of Bright Sport",
                 content: "I highly recommend Caleb for his outstanding work as our Google Media Buyer. His expertise significantly improved our online presence, optimizing campaigns for impressive results. Caleb is not only highly skilled but also a pleasure to work with, ensuring clear communication and a positive collaboration experience. We look forward to future projects together.",
                 image: alexC
               },
               {
                 name: "Daniel B.",
-                role: "",
+                role: "Head of Marketing at AlumComplete",
                 content: "Working with Caleb was a great experience. He's a genuinely nice guy and has the skill we need to get the job done efficiently and at a high-quality level. He's a great communicator.",
-                image: null
+                image: danielB
               },
               {
                 name: "Andy G.",
-                role: "",
+                role: "CEO | Founder of Boost Education",
                 content: "From the outset, it was evident that Caleb is truly an expert in the realm of Google Ads. His communication skills are exemplary, ensuring we were always on the same page and updated every step of the way. He possesses a deep understanding and a wealth of experience which became apparent as he diligently crafted our campaigns and steered our account to generate excellent leads with a remarkable ROI. Furthermore, Caleb consistently went above and beyond in his efforts, showcasing a level of dedication that is hard to come by. Even after ending this contract, he is still fully available to me which shows how much he cares for the teams he works with.",
                 image: andyG
               },
               {
                 name: "Nathaniel C.",
-                role: "",
+                role: "Head of Marketing at My Front Page",
                 content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
-                image: null
+                image: nathanielC
               }
             ].map((testimonial, index) => (
               <Card
                 key={index}
                 onClick={() => setSelectedTestimonial(testimonial)}
-                className="p-6 bg-card/80 backdrop-blur-sm border-2 border-border/50 hover:border-primary/50 transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
+                className="p-6 bg-card/80 backdrop-blur-sm border transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
+                style={{ borderColor: '#DF7606' }}
               >
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -775,6 +784,7 @@ const Index = () => {
                 <p className="text-lg text-foreground mb-5 leading-relaxed line-clamp-6">
                   {testimonial.content}
                 </p>
+                <div className="h-px w-full mb-5" style={{ backgroundColor: '#6bc741' }}></div>
                 <div className="flex items-center gap-3">
                   {testimonial.image ? (
                     <img
@@ -789,6 +799,7 @@ const Index = () => {
                   )}
                   <div>
                     <div className="font-bold text-base">{testimonial.name}</div>
+                    <div className="text-sm text-white/70">{testimonial.role}</div>
                   </div>
                 </div>
               </Card>
@@ -810,11 +821,10 @@ const Index = () => {
         <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/10 via-accent/10 to-accent/15 rounded-3xl blur-2xl opacity-60" />
               <img
                 src={promiseProfile}
                 alt="Caleb Promise"
-                className="relative rounded-3xl shadow-2xl w-full object-cover"
+                className="w-full object-contain"
               />
             </div>
 
@@ -866,21 +876,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="container mx-auto px-4 py-12 border-t border-border/50">
-        <div className="text-center">
-          <h3 className="text-2xl font-bold mb-2">
-            Caleb <span className="text-accent">👋</span>
-          </h3>
-          <p className="text-white">
-            Google Ads Freelancer | Partner
-          </p>
-          <p className="text-sm text-white mt-4">
-            © 2025 All rights reserved
-          </p>
-        </div>
-      </footer>
 
       {/* Testimonial Dialog */}
       <Dialog open={!!selectedTestimonial} onOpenChange={() => setSelectedTestimonial(null)}>

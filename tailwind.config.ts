@@ -98,7 +98,7 @@ export default {
         },
         "scroll-left": {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
         "border-spin": {
           "0%": { transform: "rotate(0deg)" },
@@ -113,7 +113,7 @@ export default {
         "scale-in": "scale-in 0.4s ease-out",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
         "scroll-right": "scroll-right 70s linear infinite",
-        "scroll-left": "scroll-left 40s linear infinite",
+        "scroll-left": "scroll-left 20s linear infinite",
         "border-spin": "border-spin 3s linear infinite",
       },
     },

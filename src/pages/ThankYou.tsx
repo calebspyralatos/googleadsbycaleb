@@ -1,4 +1,4 @@
-import promiseProfile from "@/assets/promise-profile.jpg";
+import promiseProfile from "@/assets/promise-profile.png";
 
 const ThankYou = () => {
   return (
