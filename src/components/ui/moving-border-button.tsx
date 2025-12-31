@@ -56,7 +56,7 @@ export function MovingBorderButton({
 
       <div
         className={cn(
-          "relative bg-cta border border-gray-700 backdrop-blur-xl text-cta-foreground flex items-center justify-center w-full h-full text-base font-semibold antialiased",
+          "relative bg-cta border border-gray-700 backdrop-blur-xl text-cta-foreground flex items-center justify-center w-full h-full text-base font-semibold antialiased transition-all hover:brightness-90",
           className
         )}
         style={{

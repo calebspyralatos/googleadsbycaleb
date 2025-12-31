@@ -4,6 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ProjectImage } from "@/components/ui/project-image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import AutoScroll from "embla-carousel-auto-scroll";
 import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, XCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -26,13 +28,18 @@ const CountUpNumber = ({ value, duration = 2000 }: { value: string; duration?: n
           const hasK = value.includes("K") || value.includes("k");
           const hasDecimal = value.includes(".");
 
+          // Count decimal places in original value
+          const decimalPlaces = hasDecimal && numericMatch
+            ? (numericMatch[0].split('.')[1] || '').length
+            : 0;
+
           const startTime = Date.now();
 
           const animate = () => {
             const now = Date.now();
             const progress = Math.min((now - startTime) / duration, 1);
             const currentValue = hasDecimal
-              ? (progress * numericValue).toFixed(2)
+              ? (progress * numericValue).toFixed(decimalPlaces)
               : Math.floor(progress * numericValue).toString();
 
             let display = currentValue.toString();
@@ -159,7 +166,7 @@ const TestimonialCarousel = () => {
             <div
               key={index}
               className={cn(
-                'absolute w-60 h-[420px] md:w-80 md:h-[500px] transition-all duration-500 ease-in-out',
+                'absolute w-80 h-[500px] md:w-[400px] md:h-[600px] transition-all duration-500 ease-in-out',
                 'flex items-center justify-center'
               )}
               style={{
@@ -174,16 +181,18 @@ const TestimonialCarousel = () => {
                 visibility: Math.abs(pos) > 1 ? 'hidden' : 'visible',
               }}
             >
-              <div className="relative w-full h-full rounded-3xl border-2 border-border/50 shadow-2xl overflow-hidden bg-card">
-                <iframe
-                  src={video.vimeoUrl}
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                  allowFullScreen
-                  title={video.alt}
-                ></iframe>
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <div className="w-full h-full flex flex-col">
+                <div className="relative flex-1 rounded-3xl border-2 border-border/50 shadow-2xl overflow-hidden bg-card">
+                  <iframe
+                    src={video.vimeoUrl}
+                    className="w-full h-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    allowFullScreen
+                    title={video.alt}
+                  ></iframe>
+                </div>
+                <div className="pt-4">
                   <p className="text-xl font-bold text-white text-center">{video.name}</p>
                 </div>
               </div>
@@ -268,7 +277,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
-      <section className="px-4 md:px-8 lg:px-16 pt-12 md:pt-16 pb-20 md:pb-32 relative overflow-hidden">
+      <section className="px-4 md:px-8 lg:px-16 pt-12 md:pt-16 pb-8 md:pb-12 relative overflow-hidden">
         <div 
           className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
@@ -282,7 +291,7 @@ const Index = () => {
             Book a Call
           </MovingBorderButton>
         </div>
-        <div className="max-w-[1600px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="space-y-4 animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               I specialize in Google Ads for local businesses. <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.5rem', paddingBottom: '0.75rem' }}>Only.</span>
@@ -308,25 +317,9 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Logo Carousel */}
-      <section className="pt-0 pb-32 bg-background/50 overflow-hidden">
-        <div className="flex animate-scroll-left">
-          {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
-            <div key={`logo-1-${index}`} className="mx-12 flex-shrink-0">
-              <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-            </div>
-          ))}
-          {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
-            <div key={`logo-2-${index}`} className="mx-12 flex-shrink-0">
-              <img src={logo} alt={`Client logo ${index + 1}`} className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity" />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Intro Section - Overlapping */}
-      <div className="px-4 md:px-8 lg:px-16 relative mb-48 z-10">
-        <div className="max-w-[1400px] mx-auto relative">
+      <div className="px-4 md:px-8 lg:px-16 relative mb-20 -mt-20 z-10">
+        <div className="max-w-[1100px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
             <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -339,10 +332,10 @@ const Index = () => {
                   <span className="inline-block px-2 text-white rounded-full mt-2" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>primarily for local businesses.</span>
                 </p>
               </div>
-              
+
               <div className="animate-fade-in-up">
-                <ProjectImage 
-                  src={upworkProof} 
+                <ProjectImage
+                  src={upworkProof}
                   alt="Upwork Profile - Top Rated Plus with 100% Job Success"
                   className="shadow-2xl"
                 />
@@ -351,22 +344,37 @@ const Index = () => {
           </div>
         </div>
       </div>
-      {/* Cut-off spotlight at bottom of badge - full width */}
-      <div className="relative w-full -mt-96 mb-80 h-0 pointer-events-none z-0">
-        <div 
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full opacity-40"
-          style={{
-            background: 'radial-gradient(circle at center, hsl(145, 51%, 35%) 0%, hsl(145, 51%, 30%) 15%, hsl(145, 51%, 25%) 30%, hsl(145, 51%, 18%) 45%, transparent 70%)',
-            filter: 'blur(80px)',
-            mixBlendMode: 'screen',
-            clipPath: 'polygon(0 50%, 100% 50%, 100% 100%, 0 100%)'
-          }}
-        />
-      </div>
+
+      {/* Logo Carousel */}
+      <section className="pt-0 pb-12 bg-background/50">
+        <div className="relative mx-auto flex items-center justify-center">
+          <Carousel
+            opts={{ loop: true }}
+            plugins={[AutoScroll({ playOnInit: true, speed: 1 })]}
+          >
+            <CarouselContent className="ml-0">
+              {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
+                <CarouselItem
+                  key={`logo-${index}`}
+                  className="flex basis-auto justify-center pl-0"
+                >
+                  <div className="mx-12 flex shrink-0 items-center justify-center">
+                    <img
+                      src={logo}
+                      alt={`Client logo ${index + 1}`}
+                      className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+      </section>
 
       {/* What Makes Me Different */}
       <section className="px-4 md:px-8 lg:px-16 py-32 bg-gradient-to-b from-background to-card/20 relative min-h-screen flex items-center">
-        <div className="max-w-[1200px] mx-auto relative z-10 w-full">
+        <div className="max-w-[1000px] mx-auto relative z-10 w-full">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-2">
             What Makes Me <span className="inline-block px-4 py-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'text-bottom' }}>Different</span>
           </h2>
@@ -437,7 +445,7 @@ const Index = () => {
       {/* What It's Like Working With Me */}
       <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
         {/* Smooth spotlight on the left */}
-        <div 
+        <div
           className="absolute top-1/2 -left-64 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none opacity-25"
           style={{
             background: 'radial-gradient(circle at center, hsl(145, 51%, 35%) 0%, hsl(145, 51%, 32%) 10%, hsl(145, 51%, 29%) 20%, hsl(145, 51%, 26%) 30%, hsl(145, 51%, 22%) 40%, hsl(145, 51%, 18%) 50%, hsl(145, 51%, 16%) 60%, transparent 80%)',
@@ -450,8 +458,8 @@ const Index = () => {
             What It's Like Working With Me
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
-          
-          <div className="relative w-full h-[470px] md:h-[550px] flex items-center justify-center [perspective:1000px]">
+
+          <div className="relative w-full h-[550px] md:h-[650px] flex items-center justify-center [perspective:1000px]">
             <TestimonialCarousel />
           </div>
         </div>
@@ -459,15 +467,14 @@ const Index = () => {
 
       {/* Recent Projects */}
       <section className="px-4 md:px-8 lg:px-16 py-20 relative bg-gradient-to-b from-background to-card/10">
-        <div className="max-w-[1100px] mx-auto relative z-10">
+        <div className="max-w-[900px] mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Recent Projects
           </h2>
-          <p className="text-center text-white mb-6 text-lg md:text-xl">
-              All conversions and CPA reflect calls, form submissions, and/or store visits, only. No soft conversions are included, such as clicks, page views, etc.
-
-              <span className="text-white">.</span>
-            </p>
+          <div className="text-center text-white mb-6 text-lg md:text-xl">
+            <p>All conversions and CPA reflect calls, form submissions, and/or store visits, only.</p>
+            <p>No soft conversions are included, such as clicks, page views, etc.</p>
+          </div>
           <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
 
           <div className="space-y-24">
@@ -596,11 +603,11 @@ const Index = () => {
 
       {/* Google Reviews Course Section */}
       <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative">
-        <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="max-w-[1200px] mx-auto relative z-10">
           <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 items-center">
             <div className="space-y-8 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                Creator of the Best-Selling Google Reviews Course
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight text-center">
+                Creator of the<br />Best-Selling Google Reviews Course
               </h2>
 
               <div className="space-y-6 text-lg md:text-xl text-white leading-relaxed">
@@ -649,14 +656,14 @@ const Index = () => {
       {/* Testimonials */}
       <section className="py-20 bg-card/30 overflow-hidden relative">
         <div className="px-4 md:px-8 lg:px-16 relative z-10">
-          <div className="max-w-[1400px] mx-auto">
+          <div className="max-w-[1100px] mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
               People Who Trusted Me
             </h2>
             <p className="text-center text-white mb-6 text-lg md:text-xl">
               The reviews below are real and can be verified on my{" "}
               <a 
-                href="https://www.upwork.com" 
+                href="https://www.upwork.com/freelancers/localgoogleadsbycaleb" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="underline hover:opacity-80 font-bold"
@@ -773,8 +780,7 @@ const Index = () => {
               <Card
                 key={index}
                 onClick={() => setSelectedTestimonial(testimonial)}
-                className="p-6 bg-card/80 backdrop-blur-sm border transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
-                style={{ borderColor: '#DF7606' }}
+                className="p-6 bg-card/80 backdrop-blur-sm border border-transparent hover:border-[#DF7606] transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
               >
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -784,7 +790,7 @@ const Index = () => {
                 <p className="text-lg text-foreground mb-5 leading-relaxed line-clamp-6">
                   {testimonial.content}
                 </p>
-                <div className="h-px w-full mb-5" style={{ backgroundColor: '#6bc741' }}></div>
+                <div className="h-1 w-full bg-gradient-to-r from-primary to-accent mb-5 rounded-full"></div>
                 <div className="flex items-center gap-3">
                   {testimonial.image ? (
                     <img
@@ -817,8 +823,8 @@ const Index = () => {
       </section>
 
       {/* What I Can Promise */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 bg-gradient-to-b from-card/20 to-background relative">
-        <div className="max-w-[1200px] mx-auto relative z-10">
+      <section className="px-4 md:px-8 lg:px-16 pt-8 pb-20 bg-gradient-to-b from-card/20 to-background relative">
+        <div className="max-w-[1000px] mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative animate-fade-in">
               <img
@@ -843,13 +849,13 @@ const Index = () => {
 
                 <div className="border-t border-border/30 pt-6">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#86f950', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
+                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
                   </h2>
                   <div className="space-y-4 text-2xl text-white">
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always being 100% honest with you.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always me managing your ads.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always being the best at what I do.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#86f950' }} />Always investing and treating your money, like my own.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being 100% honest with you.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always me managing your ads.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being the best at what I do.</p>
+                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always investing and treating your money, like my own.</p>
                   </div>
                 </div>
               </div>
@@ -860,7 +866,7 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="max-w-[1100px] mx-auto relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Are Your Google Ads In The Wrong Hands?
@@ -914,8 +920,14 @@ const Index = () => {
         <DialogContent className="max-w-[1200px] p-0 bg-transparent border-0">
           <div className="relative p-8 rounded-3xl" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
             <DialogHeader className="mb-6">
-              <DialogTitle className="text-3xl font-bold text-white text-center">
-                Schedule a call with me.
+              <DialogTitle className="text-center space-y-2">
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  Are Your Google Ads In The Wrong Hands?
+                </h2>
+                <br />
+                <p className="text-3xl font-bold text-white">
+                  Schedule a call with me.
+                </p>
               </DialogTitle>
             </DialogHeader>
             <div id="calendly-modal-widget" style={{ minWidth: '320px', height: '700px' }}></div>

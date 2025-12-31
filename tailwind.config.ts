@@ -98,7 +98,7 @@ export default {
         },
         "scroll-left": {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
         "border-spin": {
           "0%": { transform: "rotate(0deg)" },
