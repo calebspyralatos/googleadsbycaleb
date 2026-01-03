@@ -166,12 +166,12 @@ const TestimonialCarousel = () => {
             <div
               key={index}
               className={cn(
-                'absolute w-80 h-[500px] md:w-[400px] md:h-[600px] transition-all duration-500 ease-in-out',
+                'absolute w-64 h-[360px] md:w-[400px] md:h-[600px] transition-all duration-500 ease-in-out',
                 'flex items-center justify-center'
               )}
               style={{
                 transform: `
-                  translateX(${(pos) * 45}%) 
+                  translateX(${(pos) * 45}%)
                   scale(${isCenter ? 1 : isAdjacent ? 0.85 : 0.7})
                   rotateY(${(pos) * -10}deg)
                 `,
@@ -192,15 +192,15 @@ const TestimonialCarousel = () => {
                     title={video.alt}
                   ></iframe>
                 </div>
-                <div className="pt-4">
-                  <p className="text-xl font-bold text-white text-center">{video.name}</p>
+                <div className="pt-2 md:pt-4">
+                  <p className="text-base md:text-xl font-bold text-white text-center">{video.name}</p>
                 </div>
               </div>
             </div>
           );
         })}
       </div>
-      
+
       {/* Navigation Buttons */}
       <Button
         variant="outline"
@@ -277,8 +277,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       {/* Hero Section */}
-      <section className="px-4 md:px-8 lg:px-16 pt-12 md:pt-16 pb-8 md:pb-12 relative overflow-hidden">
-        <div 
+      <section className="px-4 md:px-8 lg:px-16 pt-8 md:pt-16 pb-4 md:pb-12 relative overflow-hidden">
+        <div
           className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
             background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
@@ -286,49 +286,52 @@ const Index = () => {
             mixBlendMode: 'screen'
           }}
         />
-        <div className="absolute top-8 right-4 md:right-8 z-10">
+        <div className="absolute top-4 -right-2 md:top-8 md:right-8 z-10 scale-[0.65] md:scale-100">
           <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
             Book a Call
           </MovingBorderButton>
         </div>
-        <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
-          <div className="space-y-4 animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+        <div className="max-w-[1200px] mx-auto flex flex-col md:grid md:grid-cols-2 gap-3 md:gap-12 items-center relative z-10">
+          {/* Image first on mobile, second on desktop */}
+          <div className="relative animate-fade-in-up flex justify-center items-center md:-mt-16 order-1 md:order-2">
+            <img
+              src={heroProfile}
+              alt="Caleb Profile"
+              className="max-w-[50%] md:max-w-[80%] h-auto object-contain"
+            />
+          </div>
+
+          <div className="space-y-2 md:space-y-4 animate-fade-in text-center md:text-left order-2 md:order-1">
+            <h1 className="text-3xl md:text-7xl font-bold leading-tight">
               I specialize in Google Ads for local businesses. <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.5rem', paddingBottom: '0.75rem' }}>Only.</span>
             </h1>
-            <div className="space-y-4">
-              <p className="text-xl text-white">
+            <div className="space-y-2 md:space-y-4">
+              <p className="text-base md:text-xl text-white">
                 If you run a local business, I will help you generate more revenue by increasing your number of leads, calls, and store visits.
               </p>
             </div>
 
-            <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
-              Book a Call
-            </MovingBorderButton>
-          </div>
-
-          <div className="relative animate-fade-in-up flex justify-center items-center -mt-16">
-            <img
-              src={heroProfile}
-              alt="Caleb Profile"
-              className="max-w-[80%] h-auto object-contain"
-            />
+            <div className="pt-2">
+              <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
+                Book a Call
+              </MovingBorderButton>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Intro Section - Overlapping */}
-      <div className="px-4 md:px-8 lg:px-16 relative mb-20 -mt-20 z-10">
+      <div className="px-4 md:px-8 lg:px-16 relative mb-8 md:mb-20 mt-4 md:-mt-20 z-10">
         <div className="max-w-[1100px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
-          <div className="relative backdrop-blur-sm rounded-2xl p-5 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="space-y-4 animate-fade-in max-w-2xl">
-                <h2 className="text-2xl md:text-5xl font-bold leading-tight">
+          <div className="relative backdrop-blur-sm rounded-2xl p-4 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
+            <div className="grid md:grid-cols-2 gap-4 md:gap-8 items-center">
+              <div className="space-y-2 md:space-y-4 animate-fade-in max-w-2xl">
+                <h2 className="text-xl md:text-5xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
-                <p className="text-lg md:text-xl text-white leading-relaxed">
-                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads,<br />
+                <p className="text-sm md:text-xl text-white leading-relaxed">
+                  I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads,<br className="hidden md:inline" />
                   <span className="inline-block px-2 text-white rounded-full mt-2" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>primarily for local businesses.</span>
                 </p>
               </div>
@@ -346,7 +349,7 @@ const Index = () => {
       </div>
 
       {/* Logo Carousel */}
-      <section className="pt-0 pb-12 bg-background/50">
+      <section className="pt-0 pb-6 md:pb-12 bg-background/50 overflow-hidden">
         <div className="relative mx-auto flex items-center justify-center">
           <Carousel
             opts={{ loop: true }}
@@ -358,11 +361,11 @@ const Index = () => {
                   key={`logo-${index}`}
                   className="flex basis-auto justify-center pl-0"
                 >
-                  <div className="mx-12 flex shrink-0 items-center justify-center">
+                  <div className="mx-6 md:mx-12 flex shrink-0 items-center justify-center">
                     <img
                       src={logo}
                       alt={`Client logo ${index + 1}`}
-                      className="h-32 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                      className="h-20 md:h-32 w-auto opacity-80 hover:opacity-100 transition-opacity"
                     />
                   </div>
                 </CarouselItem>
@@ -373,68 +376,68 @@ const Index = () => {
       </section>
 
       {/* What Makes Me Different */}
-      <section className="px-4 md:px-8 lg:px-16 py-32 bg-gradient-to-b from-background to-card/20 relative min-h-screen flex items-center">
+      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-32 bg-gradient-to-b from-background to-card/20 relative md:min-h-screen flex items-center">
         <div className="max-w-[1000px] mx-auto relative z-10 w-full">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-2">
-            What Makes Me <span className="inline-block px-4 py-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'text-bottom' }}>Different</span>
+          <h2 className="text-2xl md:text-5xl font-bold text-center mb-2">
+            What Makes Me <span className="inline-block px-2 md:px-4 py-1 md:py-3 text-white rounded-full text-2xl md:text-5xl" style={{ backgroundColor: '#385f3e', verticalAlign: 'text-bottom' }}>Different</span>
           </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
+          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-4 md:mb-8 rounded-full" />
 
-          <div className="space-y-5 text-center">
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+          <div className="space-y-3 md:space-y-5 text-center">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               I am a freelancer, and will always be.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               Therefore, I am 100% the person running your ads.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               So, no agencies or outsourcing the work to someone else.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               I wake up & go to bed managing Google Ads for local businesses. Only.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               Also, 95% of media buyers have never risked their own money on ads.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               But, I have. Running ads for my own page and Google Reviews course.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               So, I know the frustration of spending hard-earned money without seeing results.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               That's why I handle your ad spend with the same care I give my own.
             </p>
 
-            <div className="border-b border-white/20 w-64 mx-auto" />
+            <div className="border-b border-white/20 w-48 md:w-64 mx-auto" />
 
-            <p className="text-xl md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
+            <p className="text-base md:text-2xl text-white leading-relaxed animate-fade-in font-semibold">
               When it comes to helping out local business owners, like you, on anything related to Google, I've seen it all.
             </p>
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-4 md:mt-8">
             <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
             </MovingBorderButton>
@@ -443,7 +446,7 @@ const Index = () => {
       </section>
 
       {/* What It's Like Working With Me */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
+      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-20 bg-card/30 relative overflow-hidden">
         {/* Smooth spotlight on the left */}
         <div
           className="absolute top-1/2 -left-64 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none opacity-25"
@@ -454,55 +457,55 @@ const Index = () => {
           }}
         />
         <div className="max-w-[1400px] mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold text-center mb-3 md:mb-4">
             What It's Like Working With Me
           </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 rounded-full" />
+          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-4 md:mb-8 rounded-full" />
 
-          <div className="relative w-full h-[550px] md:h-[650px] flex items-center justify-center [perspective:1000px]">
+          <div className="relative w-full h-[420px] md:h-[650px] flex items-center justify-center [perspective:1000px]">
             <TestimonialCarousel />
           </div>
         </div>
       </section>
 
       {/* Recent Projects */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 relative bg-gradient-to-b from-background to-card/10">
+      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-20 relative bg-gradient-to-b from-background to-card/10">
         <div className="max-w-[900px] mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+          <h2 className="text-2xl md:text-5xl font-bold text-center mb-3 md:mb-4">
             Recent Projects
           </h2>
-          <div className="text-center text-white mb-6 text-lg md:text-xl">
+          <div className="text-center text-white mb-4 md:mb-6 text-sm md:text-xl">
             <p>All conversions and CPA reflect calls, form submissions, and/or store visits, only.</p>
             <p>No soft conversions are included, such as clicks, page views, etc.</p>
           </div>
-          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
+          <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 md:mb-16 rounded-full" />
 
-          <div className="space-y-24">
+          <div className="space-y-12 md:space-y-24">
             {/* Project 1 */}
-            <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
-              <div className="space-y-6 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold text-center">
+            <div className="grid md:grid-cols-[1fr_1.1fr] gap-4 md:gap-8 items-center">
+              <div className="space-y-3 md:space-y-6 animate-fade-in">
+                <h3 className="text-2xl md:text-5xl font-bold text-center">
                   Local Business<br />
                   Case Study #1
                 </h3>
-                <br />
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
-                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                <br className="hidden md:block" />
+                <div className="grid grid-cols-2 gap-3 md:gap-6">
+                  <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">Amount Spent</div>
+                    <div className="text-2xl md:text-4xl font-bold" style={{ color: '#6bc741' }}>
                       <CountUpNumber value="£9.6K" />
                     </div>
                   </div>
-                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
-                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
+                  <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">CPA</div>
+                    <div className="text-2xl md:text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="£21.67" />
                     </div>
                   </div>
                 </div>
-                <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                  <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
-                  <div className="text-3xl font-bold text-white">October 2025</div>
+                <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                  <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">Period</div>
+                  <div className="text-xl md:text-3xl font-bold text-white">October 2025</div>
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
@@ -517,7 +520,7 @@ const Index = () => {
             </div>
 
             {/* Project 2 */}
-            <div className="grid md:grid-cols-[1.1fr_1fr] gap-8 items-center">
+            <div className="grid md:grid-cols-[1.1fr_1fr] gap-4 md:gap-8 items-center">
               <div className="relative group order-2 md:order-1 animate-fade-in-up">
                 <div className="absolute inset-0 bg-gradient-to-tl from-accent/20 via-accent/15 via-primary/12 to-primary/15 rounded-2xl blur-xl group-hover:blur-2xl transition-all opacity-70" />
                 <ProjectImage
@@ -527,58 +530,58 @@ const Index = () => {
                   interactive
                 />
               </div>
-              <div className="space-y-6 order-1 md:order-2 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold text-center">
+              <div className="space-y-3 md:space-y-6 order-1 md:order-2 animate-fade-in">
+                <h3 className="text-2xl md:text-5xl font-bold text-center">
                   Local Business<br />
                   Case Study #2
                 </h3>
-                <br />
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
-                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                <br className="hidden md:block" />
+                <div className="grid grid-cols-2 gap-3 md:gap-6">
+                  <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">Amount Spent</div>
+                    <div className="text-2xl md:text-4xl font-bold" style={{ color: '#6bc741' }}>
                       <CountUpNumber value="$65K" />
                     </div>
                   </div>
-                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
-                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
+                  <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">CPA</div>
+                    <div className="text-2xl md:text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="$3.10" />
                     </div>
                   </div>
                 </div>
-                <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                  <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
-                  <div className="text-3xl font-bold text-white">October 2024 - October 2025</div>
+                <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                  <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">Period</div>
+                  <div className="text-xl md:text-3xl font-bold text-white">October 2024 - October 2025</div>
                 </div>
               </div>
             </div>
 
             {/* Project 3 */}
-            <div className="grid md:grid-cols-[1fr_1.1fr] gap-8 items-center">
-              <div className="space-y-6 animate-fade-in">
-                <h3 className="text-4xl md:text-5xl font-bold text-center">
+            <div className="grid md:grid-cols-[1fr_1.1fr] gap-4 md:gap-8 items-center">
+              <div className="space-y-3 md:space-y-6 animate-fade-in">
+                <h3 className="text-2xl md:text-5xl font-bold text-center">
                   Local Business<br />
                   Case Study #3
                 </h3>
-                <br />
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Amount Spent</div>
-                    <div className="text-4xl font-bold" style={{ color: '#6bc741' }}>
+                <br className="hidden md:block" />
+                <div className="grid grid-cols-2 gap-3 md:gap-6">
+                  <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">Amount Spent</div>
+                    <div className="text-2xl md:text-4xl font-bold" style={{ color: '#6bc741' }}>
                       <CountUpNumber value="$2.4K" />
                     </div>
                   </div>
-                  <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                    <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">CPA</div>
-                    <div className="text-4xl font-bold" style={{ color: '#c5fc68' }}>
+                  <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                    <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">CPA</div>
+                    <div className="text-2xl md:text-4xl font-bold" style={{ color: '#c5fc68' }}>
                       <CountUpNumber value="$40.28" />
                     </div>
                   </div>
                 </div>
-                <div className="pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
-                  <div className="text-sm text-white/60 mb-2 uppercase tracking-wide">Period</div>
-                  <div className="text-3xl font-bold text-white">October 2025</div>
+                <div className="pb-3 md:pb-6 border-b-2 rounded-lg text-center" style={{ borderColor: '#6bc741' }}>
+                  <div className="text-xs md:text-sm text-white/60 mb-1 md:mb-2 uppercase tracking-wide">Period</div>
+                  <div className="text-xl md:text-3xl font-bold text-white">October 2025</div>
                 </div>
               </div>
               <div className="relative group animate-fade-in-up">
@@ -593,7 +596,7 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="text-center mt-16">
+          <div className="text-center mt-8 md:mt-16">
             <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
             </MovingBorderButton>
@@ -602,15 +605,15 @@ const Index = () => {
       </section>
 
       {/* Google Reviews Course Section */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative">
+      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-20 bg-card/30 relative">
         <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="grid md:grid-cols-[1fr_1.3fr] gap-12 items-center">
-            <div className="space-y-8 animate-fade-in">
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight text-center">
+          <div className="grid md:grid-cols-[1fr_1.3fr] gap-6 md:gap-12 items-center">
+            <div className="space-y-4 md:space-y-8 animate-fade-in">
+              <h2 className="text-2xl md:text-5xl font-bold leading-tight text-center">
                 Creator of the<br />Best-Selling Google Reviews Course
               </h2>
 
-              <div className="space-y-6 text-lg md:text-xl text-white leading-relaxed">
+              <div className="space-y-3 md:space-y-6 text-sm md:text-xl text-white leading-relaxed text-center">
                 <p>
                   Most "review advice" online is outdated, unrealistic, or even dangerous.
                 </p>
@@ -636,7 +639,7 @@ const Index = () => {
                 </p>
 
                 <p>
-                  <span className="inline-block px-2 text-white rounded-full" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Every client I work with gets free lifetime access to it.</span>
+                  <span className="inline-block px-2 text-white rounded-full text-sm md:text-base" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Every client I work with gets free lifetime access to it.</span>
                 </p>
               </div>
             </div>
@@ -654,17 +657,17 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-card/30 overflow-hidden relative">
+      <section className="py-12 md:py-20 bg-card/30 overflow-hidden relative">
         <div className="px-4 md:px-8 lg:px-16 relative z-10">
           <div className="max-w-[1100px] mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
+            <h2 className="text-2xl md:text-5xl font-bold text-center mb-3 md:mb-4">
               People Who Trusted Me
             </h2>
-            <p className="text-center text-white mb-6 text-lg md:text-xl">
+            <p className="text-center text-white mb-4 md:mb-6 text-sm md:text-xl">
               The reviews below are real and can be verified on my{" "}
-              <a 
-                href="https://www.upwork.com/freelancers/localgoogleadsbycaleb" 
-                target="_blank" 
+              <a
+                href="https://www.upwork.com/freelancers/localgoogleadsbycaleb"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:opacity-80 font-bold"
                 style={{ color: '#63c341' }}
@@ -673,12 +676,12 @@ const Index = () => {
               </a>
               <span className="text-white">.</span>
             </p>
-            <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-16 rounded-full" />
+            <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-8 md:mb-16 rounded-full" />
           </div>
         </div>
-        
+
         <div className="relative">
-          <div className="flex animate-scroll-right gap-8 w-max">
+          <div className="flex animate-scroll-right gap-4 md:gap-8 w-max">
             {[
               {
                 name: "Adam K.",
@@ -780,32 +783,32 @@ const Index = () => {
               <Card
                 key={index}
                 onClick={() => setSelectedTestimonial(testimonial)}
-                className="p-6 bg-card/80 backdrop-blur-sm border border-transparent hover:border-[#DF7606] transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
+                className="p-4 md:p-6 bg-card/80 backdrop-blur-sm border border-transparent hover:border-[#DF7606] transition-all w-[300px] md:w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
               >
-                <div className="flex items-center gap-1 mb-3">
+                <div className="flex items-center gap-1 mb-2 md:mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5" fill="#DF7606" color="#DF7606" />
+                    <Star key={i} className="w-4 md:w-5 h-4 md:h-5" fill="#DF7606" color="#DF7606" />
                   ))}
                 </div>
-                <p className="text-lg text-foreground mb-5 leading-relaxed line-clamp-6">
+                <p className="text-sm md:text-lg text-foreground mb-3 md:mb-5 leading-relaxed line-clamp-6">
                   {testimonial.content}
                 </p>
-                <div className="h-1 w-full bg-gradient-to-r from-primary to-accent mb-5 rounded-full"></div>
-                <div className="flex items-center gap-3">
+                <div className="h-1 w-full bg-gradient-to-r from-primary to-accent mb-3 md:mb-5 rounded-full"></div>
+                <div className="flex items-center gap-2 md:gap-3">
                   {testimonial.image ? (
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                      className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover flex-shrink-0"
                     />
                   ) : (
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-sm flex-shrink-0">
+                    <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-xs md:text-sm flex-shrink-0">
                       {testimonial.name.split(' ')[0][0]}{testimonial.name.split(' ')[1][0]}
                     </div>
                   )}
                   <div>
-                    <div className="font-bold text-base">{testimonial.name}</div>
-                    <div className="text-sm text-white/70">{testimonial.role}</div>
+                    <div className="font-bold text-sm md:text-base">{testimonial.name}</div>
+                    <div className="text-xs md:text-sm text-white/70">{testimonial.role}</div>
                   </div>
                 </div>
               </Card>
@@ -814,7 +817,7 @@ const Index = () => {
         </div>
 
         <div className="container mx-auto px-4">
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 md:mt-12">
             <MovingBorderButton duration={6000} onClick={() => setIsCalendlyOpen(true)}>
               Book a Call
             </MovingBorderButton>
@@ -823,39 +826,39 @@ const Index = () => {
       </section>
 
       {/* What I Can Promise */}
-      <section className="px-4 md:px-8 lg:px-16 pt-8 pb-20 bg-gradient-to-b from-card/20 to-background relative">
+      <section className="px-4 md:px-8 lg:px-16 pt-6 md:pt-8 pb-12 md:pb-20 bg-gradient-to-b from-card/20 to-background relative">
         <div className="max-w-[1000px] mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative animate-fade-in">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
+            <div className="relative animate-fade-in flex justify-center">
               <img
                 src={promiseProfile}
                 alt="Caleb Promise"
-                className="w-full object-contain"
+                className="w-1/2 md:w-full object-contain"
               />
             </div>
 
-            <div className="space-y-6 animate-fade-in-up">
-              <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6 animate-fade-in-up">
+              <div className="space-y-4 md:space-y-6">
                 <div>
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#de3323', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can't</span> Promise
+                  <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-center md:text-left">
+                    What I <span className="inline-block px-2 md:px-3 text-white rounded-full text-2xl md:text-5xl" style={{ backgroundColor: '#de3323', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can't</span> Promise
                   </h2>
-                  <div className="space-y-4 text-2xl text-white">
-                    <p className="font-semibold flex items-center gap-3"><XCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#de3323' }} />Overnight Success.</p>
-                    <p className="font-semibold flex items-center gap-3"><XCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#de3323' }} />You'll become a millionaire.</p>
-                    <p className="font-semibold flex items-center gap-3"><XCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#de3323' }} />Every month will be profitable.</p>
+                  <div className="space-y-2 md:space-y-4 text-base md:text-2xl text-white text-center md:text-left">
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />Overnight Success.</p>
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />You'll become a millionaire.</p>
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />Every month will be profitable.</p>
                   </div>
                 </div>
 
-                <div className="border-t border-border/30 pt-6">
-                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                    What I <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
+                <div className="border-t border-border/30 pt-4 md:pt-6">
+                  <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-center md:text-left">
+                    What I <span className="inline-block px-2 md:px-3 text-white rounded-full text-2xl md:text-5xl" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
                   </h2>
-                  <div className="space-y-4 text-2xl text-white">
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being 100% honest with you.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always me managing your ads.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always being the best at what I do.</p>
-                    <p className="font-semibold flex items-center gap-3"><CheckCircle className="w-6 h-6 flex-shrink-0" style={{ color: '#385f3e' }} />Always investing and treating your money, like my own.</p>
+                  <div className="space-y-2 md:space-y-4 text-base md:text-2xl text-white text-center md:text-left">
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always being 100% honest with you.</p>
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always me managing your ads.</p>
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always being the best at what I do.</p>
+                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always investing and treating your money, like my own.</p>
                   </div>
                 </div>
               </div>
@@ -865,19 +868,19 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="px-4 md:px-8 lg:px-16 py-20 bg-card/30 relative overflow-hidden">
+      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-20 bg-card/30 relative overflow-hidden">
         <div className="max-w-[1100px] mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4">
               Are Your Google Ads In The Wrong Hands?
             </h2>
-            <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-6 rounded-full" />
-            <p className="text-3xl text-white font-bold">
+            <div className="h-1 w-32 bg-gradient-to-r from-primary to-accent mx-auto mb-4 md:mb-6 rounded-full" />
+            <p className="text-xl md:text-3xl text-white font-bold">
               Schedule a call with me.
             </p>
           </div>
 
-          <div className="relative p-8 rounded-3xl max-w-[1200px] mx-auto" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
+          <div className="relative p-4 md:p-8 rounded-3xl max-w-[1200px] mx-auto" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
             <div className="calendly-inline-widget" data-url="https://calendly.com/googleadsbycaleb/new-meeting" style={{ minWidth: '320px', height: '700px' }}></div>
           </div>
         </div>
@@ -917,20 +920,20 @@ const Index = () => {
 
       {/* Calendly Modal */}
       <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
-        <DialogContent className="max-w-[1200px] p-0 bg-transparent border-0">
-          <div className="relative p-8 rounded-3xl" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
-            <DialogHeader className="mb-6">
-              <DialogTitle className="text-center space-y-2">
-                <h2 className="text-4xl md:text-5xl font-bold text-white">
+        <DialogContent className="max-w-[95vw] md:max-w-[1200px] p-0 bg-transparent border-0">
+          <div className="relative p-4 md:p-8 rounded-3xl" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
+            <DialogHeader className="mb-4 md:mb-6">
+              <DialogTitle className="text-center space-y-1 md:space-y-2">
+                <h2 className="text-xl md:text-5xl font-bold text-white">
                   Are Your Google Ads In The Wrong Hands?
                 </h2>
-                <br />
-                <p className="text-3xl font-bold text-white">
+                <br className="hidden md:block" />
+                <p className="text-lg md:text-3xl font-bold text-white">
                   Schedule a call with me.
                 </p>
               </DialogTitle>
             </DialogHeader>
-            <div id="calendly-modal-widget" style={{ minWidth: '320px', height: '700px' }}></div>
+            <div id="calendly-modal-widget" style={{ minWidth: '320px', height: '600px' }}></div>
           </div>
         </DialogContent>
       </Dialog>
