@@ -980,8 +980,8 @@ const Index = () => {
               />
             </div>
 
-            <div className="space-y-4 md:space-y-6 animate-fade-in-up">
-              <div className="space-y-4 md:space-y-6 mx-auto md:mx-0 max-w-max">
+            <div className="space-y-4 md:space-y-6 animate-fade-in-up flex justify-center md:block">
+              <div className="space-y-4 md:space-y-6 max-w-[320px] md:max-w-none">
                 <div>
                   <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-left">
                     What I <span className="inline-block px-2 md:px-3 text-white rounded-full text-2xl md:text-5xl" style={{ backgroundColor: '#de3323', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can't</span> Promise
