@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ProjectImage } from "@/components/ui/project-image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "@/components/ui/carousel";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Star, TrendingUp, Target, Zap, Shield, CheckCircle, XCircle, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -275,11 +275,11 @@ const Index = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
+    <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="px-4 md:px-8 lg:px-16 pt-8 md:pt-16 pb-4 md:pb-12 relative overflow-hidden">
+      <section className="px-4 md:px-8 lg:px-16 pt-4 md:pt-16 pb-4 md:pb-12 relative overflow-hidden">
         <div
-          className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none opacity-30"
+          className="absolute -top-40 -left-40 w-[400px] h-[400px] md:w-[700px] md:h-[700px] rounded-full pointer-events-none opacity-30"
           style={{
             background: 'radial-gradient(circle at center, hsl(145, 51%, 30%) 0%, hsl(145, 51%, 25%) 15%, hsl(145, 51%, 20%) 30%, hsl(145, 51%, 16%) 45%, transparent 70%)',
             filter: 'blur(80px)',
@@ -302,7 +302,7 @@ const Index = () => {
           </div>
 
           <div className="space-y-2 md:space-y-4 animate-fade-in text-center md:text-left order-2 md:order-1">
-            <h1 className="text-3xl md:text-7xl font-bold leading-tight">
+            <h1 className="text-3xl md:text-7xl font-bold leading-relaxed">
               I specialize in Google Ads for local businesses. <span className="inline-block px-3 text-white rounded-full" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.5rem', paddingBottom: '0.75rem' }}>Only.</span>
             </h1>
             <div className="space-y-2 md:space-y-4">
@@ -321,16 +321,16 @@ const Index = () => {
       </section>
 
       {/* Intro Section - Overlapping */}
-      <div className="px-4 md:px-8 lg:px-16 relative mb-8 md:mb-20 mt-4 md:-mt-20 z-10">
+      <div className="px-4 md:px-8 lg:px-16 relative mb-8 md:mb-20 mt-16 md:-mt-20 z-10">
         <div className="max-w-[1100px] mx-auto relative">
           <div className="absolute inset-0 bg-gradient-to-br from-secondary/15 via-secondary/10 via-accent/10 to-accent/15 rounded-3xl blur-xl opacity-60" />
           <div className="relative backdrop-blur-sm rounded-2xl p-4 md:p-7 shadow-lg" style={{ backgroundColor: '#131316' }}>
             <div className="grid md:grid-cols-2 gap-4 md:gap-8 items-center">
               <div className="space-y-2 md:space-y-4 animate-fade-in max-w-2xl">
-                <h2 className="text-xl md:text-5xl font-bold leading-tight">
+                <h2 className="text-3xl md:text-7xl font-bold leading-tight">
                   Hi, I'm Caleb.
                 </h2>
-                <p className="text-sm md:text-xl text-white leading-relaxed">
+                <p className="text-base md:text-xl text-white leading-relaxed">
                   I've built my career on UpWork as a freelancer and I specialize in Google Ads and Google Local Ads,<br className="hidden md:inline" />
                   <span className="inline-block px-2 text-white rounded-full mt-2" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>primarily for local businesses.</span>
                 </p>
@@ -340,7 +340,7 @@ const Index = () => {
                 <ProjectImage
                   src={upworkProof}
                   alt="Upwork Profile - Top Rated Plus with 100% Job Success"
-                  className="shadow-2xl"
+                  className="shadow-2xl pointer-events-none md:pointer-events-auto"
                 />
               </div>
             </div>
@@ -352,8 +352,8 @@ const Index = () => {
       <section className="pt-0 pb-6 md:pb-12 bg-background/50 overflow-hidden">
         <div className="relative mx-auto flex items-center justify-center">
           <Carousel
-            opts={{ loop: true }}
-            plugins={[AutoScroll({ playOnInit: true, speed: 1 })]}
+            opts={{ loop: true, watchDrag: false }}
+            plugins={[AutoScroll({ playOnInit: true, speed: 1, stopOnInteraction: false })]}
           >
             <CarouselContent className="ml-0">
               {[logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16].map((logo, index) => (
@@ -365,7 +365,7 @@ const Index = () => {
                     <img
                       src={logo}
                       alt={`Client logo ${index + 1}`}
-                      className="h-20 md:h-32 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                      className="h-20 md:h-32 w-auto opacity-80 hover:opacity-100 transition-opacity pointer-events-auto"
                     />
                   </div>
                 </CarouselItem>
@@ -469,7 +469,7 @@ const Index = () => {
       </section>
 
       {/* Recent Projects */}
-      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-20 relative bg-gradient-to-b from-background to-card/10">
+      <section className="px-4 md:px-8 lg:px-16 py-12 md:py-20 relative bg-background">
         <div className="max-w-[900px] mx-auto relative z-10">
           <h2 className="text-2xl md:text-5xl font-bold text-center mb-3 md:mb-4">
             Recent Projects
@@ -613,7 +613,7 @@ const Index = () => {
                 Creator of the<br />Best-Selling Google Reviews Course
               </h2>
 
-              <div className="space-y-3 md:space-y-6 text-sm md:text-xl text-white leading-relaxed text-center">
+              <div className="space-y-3 md:space-y-6 text-base md:text-xl text-white leading-relaxed text-center">
                 <p>
                   Most "review advice" online is outdated, unrealistic, or even dangerous.
                 </p>
@@ -639,7 +639,7 @@ const Index = () => {
                 </p>
 
                 <p>
-                  <span className="inline-block px-2 text-white rounded-full text-sm md:text-base" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Every client I work with gets free lifetime access to it.</span>
+                  <span className="inline-block px-2 text-white rounded-full text-base md:text-xl" style={{ backgroundColor: '#385f3e', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Every client I work with gets free lifetime access to it.</span>
                 </p>
               </div>
             </div>
@@ -649,7 +649,7 @@ const Index = () => {
               <ProjectImage
                 src={courseImage}
                 alt="Google Reviews Course"
-                className="relative shadow-2xl"
+                className="relative shadow-2xl pointer-events-none md:pointer-events-auto"
               />
             </div>
           </div>
@@ -680,8 +680,151 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="relative">
-          <div className="flex animate-scroll-right gap-4 md:gap-8 w-max">
+        {/* Mobile Carousel with manual controls */}
+        <div className="md:hidden relative px-4">
+          <Carousel opts={{ loop: true }}>
+            <CarouselContent>
+              {[
+              {
+                name: "Adam K.",
+                role: "CEO | Founder of Equa Agency",
+                content: "Caleb is one of the best contractors I've ever worked with. Incredible at Google Ads.",
+                image: adamK
+              },
+              {
+                name: "David G.",
+                role: "CEO | Founder of Five Loaves",
+                content: "Caleb was excellent to work with. I vetted a handful of freelancers, but ended up working with Caleb due to a mix of his obvious expertise and his shared passion for the work I do for my specific clients. I plan to continue using Caleb going forward as I've already seen great results from his help with my Google ads just a month into the campaign. You will be in good hands if you decide to work with Caleb.",
+                image: davidG
+              },
+              {
+                name: "Janka M.",
+                role: "CEO | Founder of Brainyyack",
+                content: "Caleb was great to work with, very honest and available. He set up campaigns and took the time to explain how things work. I will work with him again.",
+                image: jankaM
+              },
+              {
+                name: "Brandon R.",
+                role: "CEO | Founder of Novellus",
+                content: "Caleb was great! Not only does he have an incredible amount of knowledge about Google Ads, but actively makes recommendations and suggestions to keep improving the account. He was very prompt in all communication and had incredible dedication to make the project a success!",
+                image: brandonR
+              },
+              {
+                name: "Alex C.",
+                role: "CEO | Founder of Bright Sport",
+                content: "I highly recommend Caleb for his outstanding work as our Google Media Buyer. His expertise significantly improved our online presence, optimizing campaigns for impressive results. Caleb is not only highly skilled but also a pleasure to work with, ensuring clear communication and a positive collaboration experience. We look forward to future projects together.",
+                image: alexC
+              },
+              {
+                name: "Daniel B.",
+                role: "Head of Marketing at AlumComplete",
+                content: "Working with Caleb was a great experience. He's a genuinely nice guy and has the skill we need to get the job done efficiently and at a high-quality level. He's a great communicator.",
+                image: danielB
+              },
+              {
+                name: "Andy G.",
+                role: "CEO | Founder of Boost Education",
+                content: "From the outset, it was evident that Caleb is truly an expert in the realm of Google Ads. His communication skills are exemplary, ensuring we were always on the same page and updated every step of the way. He possesses a deep understanding and a wealth of experience which became apparent as he diligently crafted our campaigns and steered our account to generate excellent leads with a remarkable ROI. Furthermore, Caleb consistently went above and beyond in his efforts, showcasing a level of dedication that is hard to come by. Even after ending this contract, he is still fully available to me which shows how much he cares for the teams he works with.",
+                image: andyG
+              },
+              {
+                name: "Nathaniel C.",
+                role: "Head of Marketing at My Front Page",
+                content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
+                image: nathanielC
+              },
+              {
+                name: "Adam K.",
+                role: "CEO | Founder of Equa Agency",
+                content: "Caleb is one of the best contractors I've ever worked with. Incredible at Google Ads.",
+                image: adamK
+              },
+              {
+                name: "David G.",
+                role: "CEO | Founder of Five Loaves",
+                content: "Caleb was excellent to work with. I vetted a handful of freelancers, but ended up working with Caleb due to a mix of his obvious expertise and his shared passion for the work I do for my specific clients. I plan to continue using Caleb going forward as I've already seen great results from his help with my Google ads just a month into the campaign. You will be in good hands if you decide to work with Caleb.",
+                image: davidG
+              },
+              {
+                name: "Janka M.",
+                role: "CEO | Founder of Brainyyack",
+                content: "Caleb was great to work with, very honest and available. He set up campaigns and took the time to explain how things work. I will work with him again.",
+                image: jankaM
+              },
+              {
+                name: "Brandon R.",
+                role: "CEO | Founder of Novellus",
+                content: "Caleb was great! Not only does he have an incredible amount of knowledge about Google Ads, but actively makes recommendations and suggestions to keep improving the account. He was very prompt in all communication and had incredible dedication to make the project a success!",
+                image: brandonR
+              },
+              {
+                name: "Alex C.",
+                role: "CEO | Founder of Bright Sport",
+                content: "I highly recommend Caleb for his outstanding work as our Google Media Buyer. His expertise significantly improved our online presence, optimizing campaigns for impressive results. Caleb is not only highly skilled but also a pleasure to work with, ensuring clear communication and a positive collaboration experience. We look forward to future projects together.",
+                image: alexC
+              },
+              {
+                name: "Daniel B.",
+                role: "Head of Marketing at AlumComplete",
+                content: "Working with Caleb was a great experience. He's a genuinely nice guy and has the skill we need to get the job done efficiently and at a high-quality level. He's a great communicator.",
+                image: danielB
+              },
+              {
+                name: "Andy G.",
+                role: "CEO | Founder of Boost Education",
+                content: "From the outset, it was evident that Caleb is truly an expert in the realm of Google Ads. His communication skills are exemplary, ensuring we were always on the same page and updated every step of the way. He possesses a deep understanding and a wealth of experience which became apparent as he diligently crafted our campaigns and steered our account to generate excellent leads with a remarkable ROI. Furthermore, Caleb consistently went above and beyond in his efforts, showcasing a level of dedication that is hard to come by. Even after ending this contract, he is still fully available to me which shows how much he cares for the teams he works with.",
+                image: andyG
+              },
+              {
+                name: "Nathaniel C.",
+                role: "Head of Marketing at My Front Page",
+                content: "Caleb delivered well on our Google Ads optimization. He went through and explained his experiences, and walked us through by way of video. He is very informative and insightful, and he knows what he is talking about. He was also genuinely invested in helping out our business and gave constructive criticism in a way that was not demeaning. His work was very well received, and I cannot recommend him enough.",
+                image: nathanielC
+              }
+            ].map((testimonial, index) => (
+              <CarouselItem key={index}>
+                <Card
+                  onClick={() => setSelectedTestimonial(testimonial)}
+                  className="p-4 bg-card/80 backdrop-blur-sm border border-transparent hover:border-[#DF7606] transition-all shadow-xl cursor-pointer mx-auto max-w-[300px]"
+                >
+                <div className="flex items-center gap-1 mb-2 md:mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 md:w-5 h-4 md:h-5" fill="#DF7606" color="#DF7606" />
+                  ))}
+                </div>
+                <p className="text-sm md:text-lg text-foreground mb-3 md:mb-5 leading-relaxed line-clamp-6">
+                  {testimonial.content}
+                </p>
+                <div className="h-1 w-full bg-gradient-to-r from-primary to-accent mb-3 md:mb-5 rounded-full"></div>
+                <div className="flex items-center gap-2 md:gap-3">
+                  {testimonial.image ? (
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover flex-shrink-0"
+                    />
+                  ) : (
+                    <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-xs md:text-sm flex-shrink-0">
+                      {testimonial.name.split(' ')[0][0]}{testimonial.name.split(' ')[1][0]}
+                    </div>
+                  )}
+                  <div>
+                    <div className="font-bold text-sm md:text-base">{testimonial.name}</div>
+                    <div className="text-xs md:text-sm text-white/70">{testimonial.role}</div>
+                  </div>
+                </div>
+              </Card>
+              </CarouselItem>
+            ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
+          </Carousel>
+        </div>
+
+        {/* Desktop auto-scroll */}
+        <div className="hidden md:block relative">
+          <div className="flex animate-scroll-right gap-8 w-max">
             {[
               {
                 name: "Adam K.",
@@ -783,32 +926,32 @@ const Index = () => {
               <Card
                 key={index}
                 onClick={() => setSelectedTestimonial(testimonial)}
-                className="p-4 md:p-6 bg-card/80 backdrop-blur-sm border border-transparent hover:border-[#DF7606] transition-all w-[300px] md:w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
+                className="p-6 bg-card/80 backdrop-blur-sm border border-transparent hover:border-[#DF7606] transition-all w-[440px] flex-shrink-0 shadow-xl cursor-pointer"
               >
-                <div className="flex items-center gap-1 mb-2 md:mb-3">
+                <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 md:w-5 h-4 md:h-5" fill="#DF7606" color="#DF7606" />
+                    <Star key={i} className="w-5 h-5" fill="#DF7606" color="#DF7606" />
                   ))}
                 </div>
-                <p className="text-sm md:text-lg text-foreground mb-3 md:mb-5 leading-relaxed line-clamp-6">
+                <p className="text-lg text-foreground mb-5 leading-relaxed line-clamp-6">
                   {testimonial.content}
                 </p>
-                <div className="h-1 w-full bg-gradient-to-r from-primary to-accent mb-3 md:mb-5 rounded-full"></div>
-                <div className="flex items-center gap-2 md:gap-3">
+                <div className="h-1 w-full bg-gradient-to-r from-primary to-accent mb-5 rounded-full"></div>
+                <div className="flex items-center gap-3">
                   {testimonial.image ? (
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-10 md:w-12 h-10 md:h-12 rounded-full object-cover flex-shrink-0"
+                      className="w-12 h-12 rounded-full object-cover flex-shrink-0"
                     />
                   ) : (
-                    <div className="w-10 md:w-12 h-10 md:h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-xs md:text-sm flex-shrink-0">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cta via-cta/80 to-accent flex items-center justify-center font-bold text-background text-sm flex-shrink-0">
                       {testimonial.name.split(' ')[0][0]}{testimonial.name.split(' ')[1][0]}
                     </div>
                   )}
                   <div>
-                    <div className="font-bold text-sm md:text-base">{testimonial.name}</div>
-                    <div className="text-xs md:text-sm text-white/70">{testimonial.role}</div>
+                    <div className="font-bold text-base">{testimonial.name}</div>
+                    <div className="text-sm text-white/70">{testimonial.role}</div>
                   </div>
                 </div>
               </Card>
@@ -833,32 +976,32 @@ const Index = () => {
               <img
                 src={promiseProfile}
                 alt="Caleb Promise"
-                className="w-1/2 md:w-full object-contain"
+                className="w-3/4 md:w-full object-contain"
               />
             </div>
 
             <div className="space-y-4 md:space-y-6 animate-fade-in-up">
-              <div className="space-y-4 md:space-y-6">
+              <div className="space-y-4 md:space-y-6 mx-auto md:mx-0 max-w-max">
                 <div>
-                  <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-center md:text-left">
+                  <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-left">
                     What I <span className="inline-block px-2 md:px-3 text-white rounded-full text-2xl md:text-5xl" style={{ backgroundColor: '#de3323', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can't</span> Promise
                   </h2>
-                  <div className="space-y-2 md:space-y-4 text-base md:text-2xl text-white text-center md:text-left">
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />Overnight Success.</p>
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />You'll become a millionaire.</p>
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />Every month will be profitable.</p>
+                  <div className="space-y-2 md:space-y-4 text-base md:text-2xl text-white text-left">
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />Overnight Success.</p>
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />You'll become a millionaire.</p>
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><XCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#de3323' }} />Every month will be profitable.</p>
                   </div>
                 </div>
 
                 <div className="border-t border-border/30 pt-4 md:pt-6">
-                  <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-center md:text-left">
+                  <h2 className="text-2xl md:text-5xl font-bold mb-3 md:mb-4 text-left">
                     What I <span className="inline-block px-2 md:px-3 text-white rounded-full text-2xl md:text-5xl" style={{ backgroundColor: '#385f3e', verticalAlign: 'middle', paddingTop: '0.25rem', paddingBottom: '0.5rem' }}>Can</span> Promise
                   </h2>
-                  <div className="space-y-2 md:space-y-4 text-base md:text-2xl text-white text-center md:text-left">
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always being 100% honest with you.</p>
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always me managing your ads.</p>
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always being the best at what I do.</p>
-                    <p className="font-semibold flex items-center justify-center md:justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always investing and treating your money, like my own.</p>
+                  <div className="space-y-2 md:space-y-4 text-base md:text-2xl text-white text-left">
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always being 100% honest with you.</p>
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always me managing your ads.</p>
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always being the best at what I do.</p>
+                    <p className="font-semibold flex items-center justify-start gap-2 md:gap-3"><CheckCircle className="w-5 md:w-6 h-5 md:h-6 flex-shrink-0" style={{ color: '#6bc741' }} />Always investing and treating your money, like my own.</p>
                   </div>
                 </div>
               </div>
@@ -921,19 +1064,19 @@ const Index = () => {
       {/* Calendly Modal */}
       <Dialog open={isCalendlyOpen} onOpenChange={setIsCalendlyOpen}>
         <DialogContent className="max-w-[95vw] md:max-w-[1200px] p-0 bg-transparent border-0">
-          <div className="relative p-4 md:p-8 rounded-3xl" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
-            <DialogHeader className="mb-4 md:mb-6">
-              <DialogTitle className="text-center space-y-1 md:space-y-2">
-                <h2 className="text-xl md:text-5xl font-bold text-white">
+          <div className="relative p-3 md:p-8 rounded-3xl" style={{ background: 'linear-gradient(135deg, #131316 0%, #385e3d 100%)' }}>
+            <DialogHeader className="mb-2 md:mb-6">
+              <DialogTitle className="text-center space-y-0 md:space-y-2">
+                <h2 className="text-base md:text-5xl font-bold text-white leading-tight">
                   Are Your Google Ads In The Wrong Hands?
                 </h2>
                 <br className="hidden md:block" />
-                <p className="text-lg md:text-3xl font-bold text-white">
+                <p className="text-sm md:text-3xl font-bold text-white">
                   Schedule a call with me.
                 </p>
               </DialogTitle>
             </DialogHeader>
-            <div id="calendly-modal-widget" style={{ minWidth: '320px', height: '600px' }}></div>
+            <div id="calendly-modal-widget" className="h-[500px] md:h-[600px]" style={{ minWidth: '320px' }}></div>
           </div>
         </DialogContent>
       </Dialog>

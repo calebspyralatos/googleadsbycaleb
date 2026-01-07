@@ -63,6 +63,13 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+    background-color: hsl(0 0% 5%);
+  }
+
+  @media (min-width: 768px) {
+    body {
+      background-color: hsl(0 0% 10%);
+    }
   }
   
   /* Smooth gradient rendering */
